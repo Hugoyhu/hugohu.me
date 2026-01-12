@@ -9,9 +9,8 @@ type UploadResult = {
 };
 
 export default function UploadForm() {
-  const cloudNameEnv = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "";
-  const uploadPresetEnv =
-    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "";
+  const cloudNameEnv = process.env.CLOUDINARY_CLOUD_NAME || "";
+  const uploadPresetEnv = process.env.CLOUDINARY_UPLOAD_PRESET || "";
 
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
@@ -39,7 +38,7 @@ export default function UploadForm() {
     try {
       if (!cloudNameEnv || !uploadPresetEnv) {
         throw new Error(
-          "Missing Cloudinary env: NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME or NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET"
+          "Missing Cloudinary env: CLOUDINARY_CLOUD_NAME or CLOUDINARY_UPLOAD_PRESET"
         );
       }
 
