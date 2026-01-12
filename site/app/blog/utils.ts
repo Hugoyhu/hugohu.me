@@ -56,7 +56,6 @@ function getMDXData(dir) {
 
 export function getBlogPosts() {
   let dir = path.join(process.cwd(), "app", "blog", "posts");
-  // Gracefully handle missing directory
   if (!fs.existsSync(dir)) {
     return [];
   }

@@ -9,8 +9,9 @@ type UploadResult = {
 };
 
 export default function UploadForm() {
-  const cloudNameEnv = process.env.CLOUDINARY_CLOUD_NAME || "";
-  const uploadPresetEnv = process.env.CLOUDINARY_UPLOAD_PRESET || "";
+  const cloudNameEnv = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "";
+  const uploadPresetEnv =
+    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "";
 
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);

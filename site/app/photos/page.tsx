@@ -70,7 +70,7 @@ export default async function PhotosPage() {
   return (
     <section>
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Photos</h1>
-      {/* <PhotoNavbar /> */}
+      <PhotoNavbar />
       {/* Centered viewport-width wrapper without negative margins */}
       <div>
         <div>
