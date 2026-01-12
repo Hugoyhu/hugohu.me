@@ -42,8 +42,8 @@ async function getPhotosByTrip(): Promise<Record<string, Photo[]>> {
 
   for (const row of data as any[]) {
     const isoNum = row.iso != null ? Number(row.iso) : null;
-    const url = typeof row.url === "string" ? row.url : "";
-    const previewUrl = cloudinaryPreview(url);
+    const originalUrl = typeof row.url === "string" ? row.url : "";
+    const previewUrl = cloudinaryPreview(originalUrl);
     const tripRaw: string | null = row.trip ?? null;
     const trip = tripRaw ? tripRaw.trim() : "";
 
@@ -55,6 +55,7 @@ async function getPhotosByTrip(): Promise<Record<string, Photo[]>> {
     const photo: Photo = {
       id: String(row.id ?? previewUrl),
       url: previewUrl,
+      fullUrl: originalUrl,
       title: row.title ?? null,
       date_taken: row.time ?? null,
       location: row.location ?? null,

@@ -42,14 +42,15 @@ async function getPhotosByCategory(): Promise<Record<string, Photo[]>> {
 
   for (const row of data as any[]) {
     const isoNum = row.iso != null ? Number(row.iso) : null;
-    const url = typeof row.url === "string" ? row.url : "";
-    const previewUrl = cloudinaryPreview(url);
+    const originalUrl = typeof row.url === "string" ? row.url : "";
+    const previewUrl = cloudinaryPreview(originalUrl);
     const categoryRaw: string | null = row.category ?? null;
     const category = (categoryRaw || "Uncategorized").trim() || "Uncategorized";
 
     const photo: Photo = {
       id: String(row.id ?? previewUrl),
       url: previewUrl,
+      fullUrl: originalUrl,
       title: row.title ?? null,
       date_taken: row.time ?? null,
       location: row.location ?? null,

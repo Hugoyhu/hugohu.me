@@ -42,11 +42,12 @@ async function getPhotos(): Promise<Photo[]> {
 
   return data.map((row: any) => {
     const isoNum = row.iso != null ? Number(row.iso) : null;
-    const url = typeof row.url === "string" ? row.url : "";
-    const previewUrl = cloudinaryPreview(url);
+    const originalUrl = typeof row.url === "string" ? row.url : "";
+    const previewUrl = cloudinaryPreview(originalUrl);
     return {
       id: String(row.id ?? previewUrl),
       url: previewUrl,
+      fullUrl: originalUrl,
       title: row.title ?? null,
       date_taken: row.time ?? null,
       location: row.location ?? null,

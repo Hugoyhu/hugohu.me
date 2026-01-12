@@ -1,8 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export type Photo = {
   id: string;
-  url: string; // direct CDN link
+  // preview-sized URL used in grids/strips
+  url: string;
+  // optional full-size URL (original asset); modal falls back to `url` if missing
+  fullUrl?: string | null;
   title?: string | null;
   date_taken?: string | null;
   location?: string | null;
@@ -69,58 +74,114 @@ export function PhotoCard({ photo }: { photo: Photo }) {
     : null;
   const cameraStr = formatCamera(p.camera_make, p.camera_model);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
+
   return (
-    <figure className="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800">
-      <img
-        src={p.url}
-        alt={p.title || "photo"}
-        className="w-full h-auto object-cover"
-        loading="lazy"
-      />
-      {(p.title ||
-        p.location ||
-        dateStr ||
-        p.camera_model ||
-        p.lens ||
-        p.focal_length ||
-        p.aperture ||
-        p.shutter_speed ||
-        p.iso) && (
-        <figcaption className="p-2 text-sm text-neutral-700 dark:text-neutral-300 space-y-1">
-          {p.title && <div className="font-medium text-lg">{p.title}</div>}
+    <>
+      <figure
+        className="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 cursor-zoom-in"
+        onClick={() => setIsOpen(true)}
+      >
+        <img
+          src={p.url}
+          alt={p.title || "photo"}
+          className="w-full h-auto object-cover"
+          loading="lazy"
+        />
+        {(p.title ||
+          p.location ||
+          dateStr ||
+          p.camera_model ||
+          p.lens ||
+          p.focal_length ||
+          p.aperture ||
+          p.shutter_speed ||
+          p.iso) && (
+          <figcaption className="p-2 text-sm text-neutral-700 dark:text-neutral-300 space-y-1">
+            {p.title && <div className="font-medium text-lg">{p.title}</div>}
 
-          {(p.location || dateStr) && (
-            <div>{[p.location, dateStr].filter(Boolean).join(" · ")}</div>
-          )}
+            {(p.location || dateStr) && (
+              <div>{[p.location, dateStr].filter(Boolean).join(" · ")}</div>
+            )}
 
-          {(cameraStr || p.shutter_speed || p.iso) && (
-            <div className="text-xs text-neutral-600 dark:text-neutral-400">
-              {[
-                cameraStr,
-                p.shutter_speed
-                  ? `${formatShutterSpeed(p.shutter_speed)}s`
-                  : null,
-                p.iso ? `ISO ${p.iso}` : null,
-              ]
-                .filter(Boolean)
-                .join(" · ")}
-            </div>
-          )}
+            {(cameraStr || p.shutter_speed || p.iso) && (
+              <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                {[
+                  cameraStr,
+                  p.shutter_speed
+                    ? `${formatShutterSpeed(p.shutter_speed)}s`
+                    : null,
+                  p.iso ? `ISO ${p.iso}` : null,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </div>
+            )}
 
-          {(p.lens || p.aperture || p.focal_length) && (
-            <div className="text-xs text-neutral-600 dark:text-neutral-400">
-              {[
-                p.lens ? `${p.lens}` : null,
-                p.focal_length ? `${p.focal_length}mm` : null,
-                p.aperture ? `f/${p.aperture}` : null,
-              ]
-                .filter(Boolean)
-                .join(" · ")}
-            </div>
-          )}
-        </figcaption>
+            {(p.lens || p.aperture || p.focal_length) && (
+              <div className="text-xs text-neutral-600 dark:text-neutral-400">
+                {[
+                  p.lens ? `${p.lens}` : null,
+                  p.focal_length ? `${p.focal_length}mm` : null,
+                  p.aperture ? `f/${p.aperture}` : null,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </div>
+            )}
+          </figcaption>
+        )}
+      </figure>
+
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+          onClick={() => setIsOpen(false)}
+        >
+          <div
+            className="relative max-w-5xl w-full max-h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute top-2 right-2 rounded-full bg-black/60 text-white px-3 py-1 text-sm hover:bg-black/80"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close image"
+            >
+              close
+            </button>
+            <img
+              src={p.fullUrl || p.url}
+              alt={p.title || "photo"}
+              className="w-full h-auto max-h-[80vh] object-contain rounded-md shadow-lg"
+            />
+            {(p.title || p.location) && (
+              <div className="mt-3 text-sm text-neutral-200">
+                {p.title && (
+                  <div className="font-medium text-base">{p.title}</div>
+                )}
+                {p.location && (
+                  <div className="text-xs text-neutral-300">{p.location}</div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
       )}
-    </figure>
+    </>
   );
 }
 
