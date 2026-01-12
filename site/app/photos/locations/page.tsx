@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { createClient } from "@supabase/supabase-js";
 import { PhotoCard, type Photo } from "app/components/photos-grid";
+import { PhotoNavbar } from "app/components/photonav";
 
 function cloudinaryPreview(url: string, transform = "w_1200,f_auto"): string {
   try {
@@ -21,7 +22,7 @@ function cloudinaryPreview(url: string, transform = "w_1200,f_auto"): string {
   }
 }
 
-async function getPhotosByCategory(): Promise<Record<string, Photo[]>> {
+async function getPhotosByTrip(): Promise<Record<string, Photo[]>> {
   const url = process.env.SUPABASE_URL;
   const key =
     process.env.SUPABASE_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -31,7 +32,7 @@ async function getPhotosByCategory(): Promise<Record<string, Photo[]>> {
   const { data, error } = await supabase
     .from("images")
     .select(
-      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,category"
+      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,trip"
     )
     .order("time", { ascending: false });
 
@@ -43,8 +44,13 @@ async function getPhotosByCategory(): Promise<Record<string, Photo[]>> {
     const isoNum = row.iso != null ? Number(row.iso) : null;
     const url = typeof row.url === "string" ? row.url : "";
     const previewUrl = cloudinaryPreview(url);
-    const categoryRaw: string | null = row.category ?? null;
-    const category = (categoryRaw || "Uncategorized").trim() || "Uncategorized";
+    const tripRaw: string | null = row.trip ?? null;
+    const trip = tripRaw ? tripRaw.trim() : "";
+
+    // Skip images without a valid trip value instead of grouping as "Uncategorized"
+    if (!trip) {
+      continue;
+    }
 
     const photo: Photo = {
       id: String(row.id ?? previewUrl),
@@ -59,42 +65,65 @@ async function getPhotosByCategory(): Promise<Record<string, Photo[]>> {
       aperture: row.aperture ?? null,
       shutter_speed: row.exposure ?? null,
       iso: Number.isFinite(isoNum) ? (isoNum as number) : null,
-      category,
+      trip,
     };
 
-    if (!grouped[category]) grouped[category] = [];
-    grouped[category].push(photo);
+    if (!grouped[trip]) grouped[trip] = [];
+    grouped[trip].push(photo);
   }
 
   return grouped;
+}
+
+function getLatestTimestamp(photos: Photo[]): number {
+  let latest = -Infinity;
+  for (const photo of photos) {
+    if (!photo.date_taken) continue;
+    const t = new Date(photo.date_taken).getTime();
+    if (Number.isFinite(t) && t > latest) {
+      latest = t;
+    }
+  }
+  return latest;
 }
 
 export const revalidate = 60;
 
 export default async function ComponentsPhotosPage() {
   headers();
-  const grouped = await getPhotosByCategory();
-  const categories = Object.keys(grouped).sort((a, b) => a.localeCompare(b));
+  const grouped = await getPhotosByTrip();
+  const categories = Object.keys(grouped).sort((a, b) => {
+    const latestA = getLatestTimestamp(grouped[a] || []);
+    const latestB = getLatestTimestamp(grouped[b] || []);
+
+    if (latestA !== latestB) {
+      // Most recent first
+      return latestB - latestA;
+    }
+
+    return a.localeCompare(b);
+  });
 
   return (
     <section>
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">
-        Components
+        Locations
       </h1>
+      <PhotoNavbar />
       <div className="space-y-10">
         {categories.map((category) => {
           const photos = grouped[category];
           if (!photos || photos.length === 0) return null;
           return (
             <div key={category} className="space-y-3">
-              <h2 className="text-lg font-semibold tracking-tight">
+              <h2 className="text-lg font-semibold tracking-tight overflow:auto">
                 {category}
               </h2>
-              <div className="flex gap-4 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+              <div className="flex flex-nowrap gap-4 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0">
                 {photos.map((photo) => (
                   <div
                     key={photo.id}
-                    className="flex-shrink-0 w-72 md:w-80 lg:w-96"
+                    className="flex-none w-64 md:w-72 lg:w-84"
                   >
                     <PhotoCard photo={photo} />
                   </div>

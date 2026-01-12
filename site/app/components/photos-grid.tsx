@@ -14,6 +14,7 @@ export type Photo = {
   shutter_speed?: string | null;
   iso?: number | null;
   category?: string | null;
+  trip?: string | null;
 };
 
 function formatShutterSpeed(val?: string | null): string | null {

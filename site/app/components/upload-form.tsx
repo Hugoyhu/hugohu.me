@@ -39,7 +39,7 @@ export default function UploadForm() {
     try {
       if (!cloudNameEnv || !uploadPresetEnv) {
         throw new Error(
-          "Missing Cloudinary env: CLOUDINARY_CLOUD_NAME or CLOUDINARY_UPLOAD_PRESET"
+          "Missing Cloudinary env: NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME or NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET"
         );
       }
 

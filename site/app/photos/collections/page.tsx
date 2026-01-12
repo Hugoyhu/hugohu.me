@@ -75,7 +75,18 @@ export const revalidate = 60;
 export default async function ComponentsPhotosPage() {
   headers();
   const grouped = await getPhotosByCategory();
-  const categories = Object.keys(grouped).sort((a, b) => a.localeCompare(b));
+  const categories = Object.keys(grouped).sort((a, b) => {
+    const aLower = a.toLowerCase();
+    const bLower = b.toLowerCase();
+
+    const isAReportage = aLower === "reportage";
+    const isBReportage = bLower === "reportage";
+
+    if (isAReportage && !isBReportage) return 1;
+    if (!isAReportage && isBReportage) return -1;
+
+    return a.localeCompare(b);
+  });
 
   return (
     <section>
@@ -96,7 +107,7 @@ export default async function ComponentsPhotosPage() {
                 {photos.map((photo) => (
                   <div
                     key={photo.id}
-                    className="flex-none w-72 md:w-80 lg:w-96"
+                    className="flex-none w-64 md:w-72 lg:w-84"
                   >
                     <PhotoCard photo={photo} />
                   </div>
