@@ -32,7 +32,7 @@ async function getPhotosByTrip(): Promise<Record<string, Photo[]>> {
   const { data, error } = await supabase
     .from("images")
     .select(
-      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,trip"
+      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,trip,featured"
     )
     .order("time", { ascending: false });
 
@@ -67,6 +67,7 @@ async function getPhotosByTrip(): Promise<Record<string, Photo[]>> {
       shutter_speed: row.exposure ?? null,
       iso: Number.isFinite(isoNum) ? (isoNum as number) : null,
       trip,
+      featured: row.featured ?? null,
     };
 
     if (!grouped[trip]) grouped[trip] = [];

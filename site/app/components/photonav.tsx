@@ -25,7 +25,7 @@ export function PhotoNavbar() {
 
   return (
     <aside className="mb-16 tracking-tight">
-      <div className="max-w-xl w-full mx-auto px-2 md:px-0">
+      <div className="w-full px-2 md:px-0">
         <div className="lg:sticky lg:top-20">
           <nav
             className="flex flex-row items-start justify-end w-full relative px-0 pb-0 fade overflow-x-auto whitespace-nowrap scroll-pr-6 md:relative"

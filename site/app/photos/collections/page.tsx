@@ -32,7 +32,7 @@ async function getPhotosByCategory(): Promise<Record<string, Photo[]>> {
   const { data, error } = await supabase
     .from("images")
     .select(
-      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,category"
+      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,category,featured"
     )
     .order("time", { ascending: false });
 
@@ -51,6 +51,7 @@ async function getPhotosByCategory(): Promise<Record<string, Photo[]>> {
       id: String(row.id ?? previewUrl),
       url: previewUrl,
       fullUrl: originalUrl,
+      featured: row.featured ?? null,
       title: row.title ?? null,
       date_taken: row.time ?? null,
       location: row.location ?? null,
