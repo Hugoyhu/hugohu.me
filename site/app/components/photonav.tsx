@@ -2,25 +2,21 @@ import Link from "next/link";
 import AuthButton from "./auth-button";
 
 const navItems = {
-  "/": {
-    name: "home",
-    newTab: false,
-  },
-  "/projects": {
-    name: "projects",
-    newTab: false,
-  },
-  "/media/Resume.pdf": {
-    name: "resume",
-    newTab: true,
-  },
   "/photos": {
-    name: "photography",
+    name: "featured",
+    newTab: false,
+  },
+  "/photos/collections": {
+    name: "collections",
+    newTab: false,
+  },
+  "/photos/trips": {
+    name: "trips",
     newTab: false,
   },
 };
 
-export function Navbar() {
+export function PhotoNavbar() {
   return (
     <aside className="mb-16 tracking-tight">
       <div className="max-w-xl w-full mx-auto px-2 md:px-0">
@@ -43,7 +39,6 @@ export function Navbar() {
                   </Link>
                 );
               })}
-              <AuthButton />
             </div>
           </nav>
         </div>

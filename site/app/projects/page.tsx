@@ -1,5 +1,5 @@
-import { ProjectsList } from 'app/components/projects'
-import { projects } from './data'
+import { ProjectsList } from "app/components/projects";
+import { projects } from "./data";
 
 export default function ProjectsPage() {
   return (
@@ -7,5 +7,5 @@ export default function ProjectsPage() {
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Projects</h1>
       <ProjectsList entries={projects} />
     </section>
-  )
+  );
 }

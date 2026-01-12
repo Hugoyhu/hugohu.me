@@ -44,6 +44,9 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+  /* Global layout width and full-bleed centering */
+  --site-content-w: 50vw;
+  --bleed-margin: calc(50% - 50vw);
 }
 
 @media (prefers-color-scheme: dark) {
