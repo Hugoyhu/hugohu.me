@@ -73,8 +73,11 @@ export function PhotoCard({ photo }: { photo: Photo }) {
   const { status } = useSession();
   const isAuthenticated = status === "authenticated";
 
+  const [isDeleted, setIsDeleted] = useState(false);
   const [localPhoto, setLocalPhoto] = useState(photo);
   useEffect(() => setLocalPhoto(photo), [photo]);
+
+  if (isDeleted) return null;
 
   const p = localPhoto;
   const dateStr = p.date_taken
@@ -90,6 +93,8 @@ export function PhotoCard({ photo }: { photo: Photo }) {
   const [form, setForm] = useState({
     title: p.title ?? "",
     location: p.location ?? "",
+    category: p.category ?? "",
+    trip: p.trip ?? "",
     camera_model: p.camera_model ?? "",
     lens: p.lens ?? "",
     focal_length: p.focal_length ?? "",
@@ -103,6 +108,8 @@ export function PhotoCard({ photo }: { photo: Photo }) {
     setForm({
       title: p.title ?? "",
       location: p.location ?? "",
+      category: p.category ?? "",
+      trip: p.trip ?? "",
       camera_model: p.camera_model ?? "",
       lens: p.lens ?? "",
       focal_length: p.focal_length ?? "",
@@ -137,6 +144,8 @@ export function PhotoCard({ photo }: { photo: Photo }) {
         body: JSON.stringify({
           title: form.title || null,
           location: form.location || null,
+          category: form.category || null,
+          trip: form.trip || null,
           camera_model: form.camera_model || null,
           lens: form.lens || null,
           focal_length: form.focal_length || null,
@@ -158,6 +167,8 @@ export function PhotoCard({ photo }: { photo: Photo }) {
         ...prev,
         title: form.title || null,
         location: form.location || null,
+        category: form.category || null,
+        trip: form.trip || null,
         camera_model: form.camera_model || null,
         lens: form.lens || null,
         focal_length: form.focal_length || null,
@@ -170,6 +181,36 @@ export function PhotoCard({ photo }: { photo: Photo }) {
       setIsEditing(false);
     } catch (e: any) {
       setError(e?.message || "Error saving changes");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleDelete() {
+    if (!isAuthenticated) return;
+    if (
+      !window.confirm(
+        "Are you sure you want to delete this photo? This cannot be undone."
+      )
+    ) {
+      return;
+    }
+
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/photos/${encodeURIComponent(photo.id)}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to delete");
+      }
+
+      setIsOpen(false);
+      setIsDeleted(true);
+    } catch (e: any) {
+      setError(e?.message || "Error deleting photo");
     } finally {
       setSaving(false);
     }
@@ -204,7 +245,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
             )}
 
             {(cameraStr || p.shutter_speed || p.iso) && (
-              <div className="text-xs text-neutral-600 dark:text-neutral-400">
+              <div className="text-sm text-neutral-600 dark:text-neutral-400">
                 {[
                   cameraStr,
                   p.shutter_speed
@@ -218,7 +259,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
             )}
 
             {(p.lens || p.aperture || p.focal_length) && (
-              <div className="text-xs text-neutral-600 dark:text-neutral-400">
+              <div className="text-sm text-neutral-600 dark:text-neutral-400">
                 {[
                   p.lens ? `${p.lens}` : null,
                   p.focal_length ? `${p.focal_length}mm` : null,
@@ -258,6 +299,16 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                 {isEditing ? "cancel edit" : "edit"}
               </button>
             )}
+            {isAuthenticated && !isEditing && (
+              <button
+                type="button"
+                className="absolute top-2 left-24 rounded-full bg-red-700/80 text-white px-3 py-1 text-sm hover:bg-red-600/90"
+                onClick={handleDelete}
+                disabled={saving}
+              >
+                delete
+              </button>
+            )}
             <img
               src={p.fullUrl || p.url}
               alt={p.title || "photo"}
@@ -269,7 +320,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   <div className="font-medium text-base">{p.title}</div>
                 )}
                 {(p.location || dateStr) && (
-                  <div className="text-xs text-neutral-300">
+                  <div className="text-sm text-neutral-300">
                     {[p.location, dateStr].filter(Boolean).join(" · ")}
                   </div>
                 )}
@@ -279,7 +330,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   p.lens ||
                   p.aperture ||
                   p.focal_length) && (
-                  <div className="text-[11px] text-neutral-300/90 space-y-0.5">
+                  <div className="text-sm text-neutral-300/90 space-y-0.5">
                     {(cameraStr || p.shutter_speed || p.iso) && (
                       <div>
                         {[
@@ -309,12 +360,12 @@ export function PhotoCard({ photo }: { photo: Photo }) {
               </div>
             )}
             {isEditing && (
-              <div className="mt-4 text-sm text-neutral-200 space-y-3">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="mt-4 text-sm text-neutral-200 space-y-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">Title</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.title}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, title: e.target.value }))
@@ -322,9 +373,29 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                     />
                   </label>
                   <label className="flex flex-col gap-1 text-xs">
+                    <span className="text-neutral-300">Category</span>
+                    <input
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
+                      value={form.category}
+                      onChange={(e) =>
+                        setForm((f) => ({ ...f, category: e.target.value }))
+                      }
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">Location</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
+                      value={form.trip}
+                      onChange={(e) =>
+                        setForm((f) => ({ ...f, trip: e.target.value }))
+                      }
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs">
+                    <span className="text-neutral-300">Location</span>
+                    <input
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.location}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, location: e.target.value }))
@@ -334,7 +405,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">Camera model</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.camera_model}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, camera_model: e.target.value }))
@@ -344,7 +415,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">Lens</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.lens}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, lens: e.target.value }))
@@ -354,7 +425,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">Focal length</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.focal_length}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, focal_length: e.target.value }))
@@ -364,7 +435,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">Aperture</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.aperture}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, aperture: e.target.value }))
@@ -374,7 +445,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">Shutter speed</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.shutter_speed}
                       onChange={(e) =>
                         setForm((f) => ({
@@ -387,7 +458,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                   <label className="flex flex-col gap-1 text-xs">
                     <span className="text-neutral-300">ISO</span>
                     <input
-                      className="rounded border border-neutral-600 bg-black/40 px-2 py-1 text-sm text-neutral-50"
+                      className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.iso}
                       onChange={(e) =>
                         setForm((f) => ({ ...f, iso: e.target.value }))

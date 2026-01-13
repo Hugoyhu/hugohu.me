@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 function ArrowIcon() {
   return (
     <svg
@@ -16,10 +20,14 @@ function ArrowIcon() {
 }
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isIntroPage = pathname === "/";
+
   return (
     <footer className="mb-16 w-full px-2 md:px-0">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        {/* <li>
+      <div className={isIntroPage ? "max-w-xl mx-auto" : undefined}>
+        <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+          {/* <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
@@ -30,51 +38,52 @@ export default function Footer() {
             <p className="ml-2 h-7">rss</p>
           </a>
         </li> */}
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/Hugoyhu"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.instagram.com/_hugohu_/?hl=en"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">instagram</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.linkedin.com/in/hugo-hu-a4a67821a/"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">linkedin</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="mailto:hugo@hugohu.me"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">e-mail</p>
-          </a>
-        </li>
-      </ul>
+          <li>
+            <a
+              className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/Hugoyhu"
+            >
+              <ArrowIcon />
+              <p className="ml-2 h-7">github</p>
+            </a>
+          </li>
+          <li>
+            <a
+              className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://www.instagram.com/_hugohu_/?hl=en"
+            >
+              <ArrowIcon />
+              <p className="ml-2 h-7">instagram</p>
+            </a>
+          </li>
+          <li>
+            <a
+              className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://www.linkedin.com/in/hugo-hu-a4a67821a/"
+            >
+              <ArrowIcon />
+              <p className="ml-2 h-7">linkedin</p>
+            </a>
+          </li>
+          <li>
+            <a
+              className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="mailto:hugo@hugohu.me"
+            >
+              <ArrowIcon />
+              <p className="ml-2 h-7">e-mail</p>
+            </a>
+          </li>
+        </ul>
+      </div>
       {/* <p className="mt-8 text-neutral-600 dark:text-neutral-300">
         © {new Date().getFullYear()} MIT Licensed
       </p> */}

@@ -2,7 +2,7 @@ import { BlogPosts } from "app/components/posts";
 
 export default function Page() {
   return (
-    <div className="max-w-xl mx-4 mt-8 lg:mx-auto">
+    <div className="max-w-xl mt-8 mx-auto">
       <section>
         <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
           Hugo Hu
