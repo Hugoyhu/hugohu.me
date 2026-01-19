@@ -58,7 +58,7 @@ function formatShutterSpeed(val?: string | null): string | null {
 
 function formatCamera(
   make?: string | null,
-  model?: string | null
+  model?: string | null,
 ): string | null {
   const m = (make || "").trim();
   const mdl = (model || "").trim();
@@ -190,7 +190,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
     if (!isAuthenticated) return;
     if (
       !window.confirm(
-        "Are you sure you want to delete this photo? This cannot be undone."
+        "Are you sure you want to delete this photo? This cannot be undone.",
       )
     ) {
       return;
@@ -383,7 +383,7 @@ export function PhotoCard({ photo }: { photo: Photo }) {
                     />
                   </label>
                   <label className="flex flex-col gap-1 text-xs">
-                    <span className="text-neutral-300">Location</span>
+                    <span className="text-neutral-300">Trip</span>
                     <input
                       className="rounded border border-neutral-600 bg-black/40 px-2 py-0.5 text-xs text-neutral-50"
                       value={form.trip}
