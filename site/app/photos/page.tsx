@@ -33,7 +33,7 @@ async function getPhotos(): Promise<Photo[]> {
   const { data, error } = await supabase
     .from("images")
     .select(
-      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,featured"
+      "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,trip,featured"
     )
     .eq("featured", true)
     .order("time", { ascending: false })
@@ -59,6 +59,7 @@ async function getPhotos(): Promise<Photo[]> {
       aperture: row.aperture ?? null,
       shutter_speed: row.exposure ?? null,
       iso: Number.isFinite(isoNum) ? (isoNum as number) : null,
+      trip: row.trip ?? null,
       featured: row.featured ?? null,
     } as Photo;
   });
