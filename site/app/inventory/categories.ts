@@ -1,5 +1,1 @@
-export {
-  CATEGORY_OPTIONS,
-  CATEGORY_KEYS,
-  SPEC_FIELD_HINTS,
-} from "types/inventory";
+export { CATEGORY_OPTIONS, CATEGORY_KEYS } from "types/inventory";

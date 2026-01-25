@@ -57,9 +57,7 @@ function buildQrMatrix(value: string): boolean[][] {
 export const LabelDocument = ({ item }: { item: InventoryItem }) => {
   const qrMatrix = buildQrMatrix(item.mpn);
 
-  const specsSummary = Object.entries(item.specs || {})
-    .map(([key, val]) => `${key}: ${val}`)
-    .join("  •  ");
+  const specsSummary = (item.spec || "").trim();
 
   return (
     <Document>

@@ -21,12 +21,7 @@ const mockItem: any = {
   package: "DIP-28",
   rohs: true,
   msl: 3,
-  specs: {
-    clock: "20MHz",
-    flash: "32KB",
-    ram: "2KB",
-    voltage: "1.8-5.5V",
-  },
+  spec: "20MHz, 32KB flash, 2KB RAM, 1.8–5.5V",
 };
 
 export default function DesignPage() {

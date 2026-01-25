@@ -3,7 +3,7 @@
 import { getServerSession } from "next-auth";
 import { createClient } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
-import { SPEC_FIELD_HINTS, type ComponentCategory } from "types/inventory";
+import type { ComponentCategory } from "types/inventory";
 
 // Initialize Admin bypass for RLS
 const supabaseAdmin = createClient(
@@ -37,18 +37,9 @@ export async function upsertComponent(formData: FormData) {
 
   // extract fields
   const category = formData.get("category") as ComponentCategory | null;
-
-  const specs: Record<string, any> = {};
-  if (category && SPEC_FIELD_HINTS[category]) {
-    for (const key of SPEC_FIELD_HINTS[category]) {
-      const raw = formData.get(`spec_${key}`);
-      const value =
-        typeof raw === "string" ? raw.trim() : raw?.toString().trim();
-      if (value) {
-        specs[key] = value;
-      }
-    }
-  }
+  const specRaw = formData.get("spec");
+  const spec =
+    typeof specRaw === "string" ? specRaw.trim() : specRaw?.toString().trim();
 
   const rawData = {
     name: formData.get("name") as string,
@@ -60,7 +51,7 @@ export async function upsertComponent(formData: FormData) {
     subcategory: formData.get("subcategory") as string,
     quantity: parseInt(formData.get("quantity") as string),
     package: formData.get("package") as string,
-    specs,
+    spec: spec || null,
     rohs: (formData.get("rohs") as string) === "true",
     msl: parseInt((formData.get("msl") as string) || "0"),
   };

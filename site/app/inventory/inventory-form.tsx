@@ -14,7 +14,6 @@ import { Textarea } from "@/app/components/ui/textarea";
 import {
   CATEGORY_KEYS,
   CATEGORY_OPTIONS,
-  SPEC_FIELD_HINTS,
   type ComponentCategory,
   type Component,
 } from "types/inventory";
@@ -308,30 +307,14 @@ export function InventoryForm({ items }: InventoryFormProps) {
         </div>
 
         <div className="space-y-1.5 sm:col-span-2">
-          <Label>Specs</Label>
-          {!category ? (
-            <p className="text-xs text-muted-foreground">
-              Select a category to enter category-specific specs.
-            </p>
-          ) : (
-            <div className="grid gap-3 sm:grid-cols-3">
-              {SPEC_FIELD_HINTS[category]?.map((field) => (
-                <div key={field} className="space-y-1.5">
-                  <Label htmlFor={`spec_${field}`}>{field}</Label>
-                  <Input
-                    id={`spec_${field}`}
-                    name={`spec_${field}`}
-                    placeholder={field}
-                    defaultValue={
-                      selectedItem?.specs?.[field] !== undefined
-                        ? String(selectedItem.specs[field])
-                        : ""
-                    }
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <Label htmlFor="spec">Spec (optional)</Label>
+          <Textarea
+            id="spec"
+            name="spec"
+            placeholder="e.g. 10kΩ ±1% 0.1W, 0603, 50V"
+            defaultValue={selectedItem?.spec ?? ""}
+            rows={2}
+          />
         </div>
 
         <div className="sm:col-span-2 flex items-center justify-between gap-2">
