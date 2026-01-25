@@ -28,7 +28,13 @@ export type Component = InventoryItem;
 export const CATEGORY_OPTIONS: Record<ComponentCategory, string[]> = {
   Resistors: ["Chip / SMD", "Through-hole", "Network / Array"],
   Microcontroller: ["AVR-8", "ARM-M0", "ARM-M33", "ARM-M4", "ARM-M7"],
-  Capacitors: ["Ceramic / MLCC", "Film", "Tantalum", "Aluminum-Polymer"],
+  Capacitors: [
+    "Ceramic / MLCC",
+    "Film",
+    "Tantalum",
+    "Aluminum-Polymer",
+    "Aluminum-Electrolytic",
+  ],
   Connectors: ["USB", "2.54mm", "1.27mm", "IC Socket"],
 };
 
