@@ -15,19 +15,20 @@ export interface InventoryItem {
   package: string;
 }
 
-export type ComponentCategory =
-  | "Resistors"
-  | "Microcontroller"
-  | "Capacitors"
-  | "Connectors";
-
-// Single type for components
-export type Component = InventoryItem;
-
 // Category options and spec field hints used by the inventory UI
-export const CATEGORY_OPTIONS: Record<ComponentCategory, string[]> = {
+export const CATEGORY_OPTIONS = {
   Resistors: ["Chip / SMD", "Through-hole", "Network / Array"],
-  Microcontroller: ["AVR-8", "ARM-M0", "ARM-M33", "ARM-M4", "ARM-M7"],
+  Ferrites: ["Chip / SMD"],
+  Microcontroller: [
+    "AVR-8",
+    "ARM-M0",
+    "ARM-M0+",
+    "ARM-M33",
+    "ARM-M4",
+    "ARM-M7",
+    "PIC-32",
+    "RF / Wireless",
+  ],
   Capacitors: [
     "Ceramic / MLCC",
     "Film",
@@ -35,8 +36,33 @@ export const CATEGORY_OPTIONS: Record<ComponentCategory, string[]> = {
     "Aluminum-Polymer",
     "Aluminum-Electrolytic",
   ],
-  Connectors: ["USB", "2.54mm", "1.27mm", "IC Socket"],
-};
+  Connectors: [
+    "USB",
+    "2.54mm",
+    "1.27mm",
+    "IC Socket",
+    "FPC",
+    "Audio",
+    "Storage",
+  ],
+  "Integrated Circuit": ["PMIC", "Boost Converter", "Sensor", "DAC/ADC"],
+  Breakouts: [
+    "Microcontroller",
+    "SBC",
+    "Power",
+    "Sensor",
+    "Audio",
+    "Input",
+    "Wireless",
+    "Storage",
+  ],
+  Switches: ["Navigation / Joystick", "Push Button", "Slide Switch"],
+} as const;
+
+export type ComponentCategory = keyof typeof CATEGORY_OPTIONS;
+
+// Single type for components
+export type Component = InventoryItem;
 
 export const CATEGORY_KEYS: ComponentCategory[] = Object.keys(
   CATEGORY_OPTIONS,
