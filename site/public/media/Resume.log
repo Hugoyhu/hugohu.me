@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  3 JAN 2026 20:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 APR 2026 15:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**/Users/hugohu/Documents/site/media/Resume.tex
-(/Users/hugohu/Documents/site/media/Resume.tex
+**/Users/hugohu/Documents/hugohu.me/site/public/media/Resume.tex
+(/Users/hugohu/Documents/hugohu.me/site/public/media/Resume.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -817,15 +817,15 @@ LaTeX Font Info:    ... okay on input line 77.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
-* v-part:(T,H,B)=(51.21504pt, 671.48495pt, 72.26999pt)
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(28.45274pt, 694.24725pt, 72.26999pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=472.03123pt
-* \textheight=671.48495pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
-* \topmargin=-58.05495pt
+* \textwidth=500.484pt
+* \textheight=694.24725pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-80.81725pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -912,14 +912,14 @@ L3 programming layer <2025-01-18>
  ) 
 Here is how much of TeX's memory you used:
  16516 strings out of 473190
- 287125 string characters out of 5715801
- 663042 words of memory out of 5000000
+ 287176 string characters out of 5715801
+ 664044 words of memory out of 5000000
  39548 multiletter control sequences out of 15000+600000
  635125 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,496b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,513b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Resume.pdf (1 page, 297978 bytes).
+Output written on Resume.pdf (1 page, 298645 bytes).
 PDF statistics:
  94 PDF objects out of 1000 (max. 8388607)
  71 compressed objects within 1 object stream

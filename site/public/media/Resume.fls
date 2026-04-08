@@ -1,8 +1,8 @@
-PWD /Users/hugohu/Documents/site/media
+PWD /Users/hugohu/Documents/hugohu.me/site/public/media
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/hugohu/Documents/site/media/Resume.tex
+INPUT /Users/hugohu/Documents/hugohu.me/site/public/media/Resume.tex
 OUTPUT Resume.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
