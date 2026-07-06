@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 JUL 2026 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 JUL 2026 18:23
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -859,13 +859,13 @@ LaTeX Font Info:    ... okay on input line 77.
 )
 Package hyperref Info: Link coloring ON on input line 77.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/n' will be
-(Font)              scaled to size 36.0pt on input line 81.
+(Font)              scaled to size 42.0pt on input line 81.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/thin/n' aliased to
 (Font)              `T1/Inter-TLF/ul/n' on input line 81.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ul/n' will be
-(Font)              scaled to size 36.0pt on input line 81.
+(Font)              scaled to size 42.0pt on input line 81.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
-(Font)              scaled to size 36.0pt on input line 81.
+(Font)              scaled to size 42.0pt on input line 81.
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on input line 82.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd)
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -908,11 +908,11 @@ Overfull \hbox (15.0853pt too wide) in paragraph at lines 108--109
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 147.
+(Font)              <12> on input line 148.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 147.
+(Font)              scaled to size 12.0pt on input line 148.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 149.
+(Font)              scaled to size 10.95pt on input line 150.
 
 
 [1
@@ -924,18 +924,18 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 16532 strings out of 473190
- 287688 string characters out of 5715801
- 667050 words of memory out of 5000000
+ 16531 strings out of 473190
+ 287674 string characters out of 5715801
+ 666050 words of memory out of 5000000
  39560 multiletter control sequences out of 15000+600000
  644615 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,508b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Resume.pdf (1 page, 322953 bytes).
+Output written on Resume.pdf (1 page, 326581 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
+ 96 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
