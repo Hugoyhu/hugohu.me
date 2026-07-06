@@ -20,9 +20,10 @@ export async function getInventory() {
     throw new Error("You must be logged in to see inventory");
   }
 
+  const table_name = process.env.SUPABASE_INV_TABLE_NAME!;
   // Use admin client
   const { data, error } = await supabaseAdmin
-    .from("components")
+    .from(table_name)
     .select("*")
     .order("category");
 
@@ -57,8 +58,9 @@ export async function upsertComponent(formData: FormData) {
   };
 
   // Upsert: if mpn exists, update; otherwise insert
+  const table_name = process.env.SUPABASE_INV_TABLE_NAME!;
   const { error } = await supabaseAdmin
-    .from("components")
+    .from(table_name)
     .upsert(rawData, { onConflict: "mpn" });
 
   if (error) throw new Error(error.message);
@@ -70,11 +72,8 @@ export async function upsertComponent(formData: FormData) {
 export async function deleteComponent(id: string) {
   const session = await getServerSession();
   if (!session) throw new Error("Unauthorized");
-
-  const { error } = await supabaseAdmin
-    .from("components")
-    .delete()
-    .eq("id", id);
+  const table_name = process.env.SUPABASE_INV_TABLE_NAME!;
+  const { error } = await supabaseAdmin.from(table_name).delete().eq("id", id);
 
   if (error) throw new Error(error.message);
 

@@ -1,4 +1,3 @@
-// Use plain anchors in descriptions for consistent new-tab behavior
 import type { ReactNode } from "react";
 
 export type ProjectEntry = {
@@ -10,6 +9,44 @@ export type ProjectEntry = {
 };
 
 export const projects: ProjectEntry[] = [
+  {
+    title: "Electronic Component Manager",
+    url: "https://github.com/Hugoyhu/hugohu.me",
+    imageUrl: "/media/Inventory.png",
+    year: 2026,
+    description: (
+      <>
+        Built into the hugohu.me website, this asset and inventory tracker uses
+        shared SQL query APIs and a common UI, and keeps a record of all
+        electronic components in your workshop. It has a secured login portal
+        and offers typed or barcode search, part entry, part modifications, and
+        the ability to generate PDF asset labels for use with thermal printers.
+      </>
+    ),
+  },
+  {
+    title: "Photography Portfolio (v3)",
+    url: "https://github.com/Hugoyhu/hugohu.me",
+    imageUrl: "/media/Photos.png",
+    year: 2026,
+    description: (
+      <>
+        {" "}
+        <a
+          href="https://hugohu.me/photos"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Built into the hugohu.me website,
+        </a>{" "}
+        this photography portfolio uses shared SQL query APIs and a common UI,
+        and integrates Cloudinary CDN. Images are pulled from the database at
+        runtime, and implements a secured login portal to upload and modify
+        photographs. EXIF data is provided for each photograph, and multiple
+        viewing sort options are offered.
+      </>
+    ),
+  },
   {
     title: "Corginator v2 (SAMD21)",
     url: "https://github.com/Hugoyhu/SAMD21-Corginator",
@@ -25,7 +62,7 @@ export const projects: ProjectEntry[] = [
     ),
   },
   {
-    title: "Image Portfolio v2",
+    title: "Image Portfolio (v2)",
     url: "https://github.com/Hugoyhu/Image-Gallery-v2",
     imageUrl: "/media/ImageGallery.jpg",
     year: 2024,
@@ -73,8 +110,8 @@ export const projects: ProjectEntry[] = [
           {" "}
           ZephyrHub{" "}
         </a>
-        , this new design has four USB Type-C outputs each operating at up to
-        480Mbps, serving as an open-source reference design for the SL2.1A
+        , this new design features four USB Type-C outputs each operating at up
+        to 480Mbps, serving as an open-source reference design for the SL2.1A
         chipset.
       </>
     ),

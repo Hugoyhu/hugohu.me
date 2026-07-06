@@ -12,7 +12,7 @@ export async function POST(req: Request) {
         {
           error: "Missing Supabase server env (SUPABASE_URL, SUPABASE_SECRET)",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -34,7 +34,8 @@ export async function POST(req: Request) {
       featured: Boolean(body.featured ?? false),
     };
 
-    const { error } = await supabase.from("images").insert(payload);
+    const table_name = process.env.SUPABASE_PHOTO_TABLE_NAME!;
+    const { error } = await supabase.from(table_name).insert(payload);
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
@@ -42,7 +43,7 @@ export async function POST(req: Request) {
   } catch (err: any) {
     return NextResponse.json(
       { error: err?.message || "Insert error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

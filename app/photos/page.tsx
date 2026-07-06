@@ -30,8 +30,10 @@ async function getPhotos(): Promise<Photo[]> {
   if (!url || !key) return [];
 
   const supabase = createClient(url, key, { auth: { persistSession: false } });
+
+  const table_name = process.env.SUPABASE_PHOTO_TABLE_NAME!;
   const { data, error } = await supabase
-    .from("images")
+    .from(table_name)
     .select(
       "id,url,title,time,location,camera_model,lens,focal_length,aperture,iso,exposure,category,trip,featured",
     )

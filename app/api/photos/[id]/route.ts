@@ -6,7 +6,7 @@ import { v2 as cloudinary } from "cloudinary";
 
 export async function PATCH(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> },
 ) {
   const { id } = await context.params;
   const session = await getServerSession(authOptions as any);
@@ -20,7 +20,7 @@ export async function PATCH(
   if (!url || !key) {
     return NextResponse.json(
       { error: "Supabase not configured" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -55,8 +55,10 @@ export async function PATCH(
 
   const idNum = Number(id);
 
+  const table_name = process.env.SUPABASE_PHOTO_TABLE_NAME!;
+
   const { error } = await supabase
-    .from("images")
+    .from(table_name)
     .update(update)
     .eq("id", Number.isFinite(idNum) ? idNum : id)
     .single();
@@ -71,7 +73,7 @@ export async function PATCH(
 
 export async function DELETE(
   _req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> },
 ) {
   const { id } = await context.params;
   const session = await getServerSession(authOptions as any);
@@ -85,15 +87,16 @@ export async function DELETE(
   if (!url || !key) {
     return NextResponse.json(
       { error: "Supabase not configured" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
   const supabase = createClient(url, key, { auth: { persistSession: false } });
+  const table_name = process.env.SUPABASE_PHOTO_TABLE_NAME!;
 
   const idNum = Number(id);
   const { data, error: fetchError } = await supabase
-    .from("images")
+    .from(table_name)
     .select("url")
     .eq("id", Number.isFinite(idNum) ? idNum : id)
     .single();
@@ -102,7 +105,7 @@ export async function DELETE(
     console.error("Error fetching image for delete", fetchError);
     return NextResponse.json(
       { error: "Failed to fetch image" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -133,7 +136,7 @@ export async function DELETE(
   }
 
   const { error: deleteError } = await supabase
-    .from("images")
+    .from(table_name)
     .delete()
     .eq("id", Number.isFinite(idNum) ? idNum : id);
 

@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcryptjs";
 
 export const authOptions = {
   providers: [
@@ -11,16 +12,17 @@ export const authOptions = {
       },
       async authorize(credentials) {
         const allowedEmail = process.env.ALLOWED_EMAIL;
-        const adminPassword = process.env.ADMIN_PASSWORD;
-        if (!credentials || !allowedEmail || !adminPassword) {
+        const hash = process.env.ADMIN_PASSWORD_HASHED;
+        if (!credentials || !allowedEmail || !hash) {
           return null;
         }
         const email = credentials.email?.toString().toLowerCase();
-        const password = credentials.password?.toString();
-        if (
-          email === allowedEmail.toLowerCase() &&
-          password === adminPassword
-        ) {
+
+        const isPasswordValid = await bcrypt.compare(
+          credentials.password,
+          hash,
+        );
+        if (email === allowedEmail.toLowerCase() && isPasswordValid) {
           return { id: "admin", name: "Admin", email: allowedEmail } as any;
         }
         return null;

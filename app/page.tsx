@@ -15,7 +15,7 @@ export default function Page() {
           In my free time, I love photography, cooking, and PCB design. `}
         </p> */}
         <p className="mb-4">
-          {`Hi! I'm a freshman at the State University of New York at Stony Brook, where I will pursue
+          {`Hi! I'm a freshman at Stony Brook University, where I will pursue
           a double major in Computer Science (Honors) and Applied Math & Statistics, with a minor in 
           Political Science. I am also a member of the Honors College. In my free time, I love photography,
           cooking, and designing PCBs.`}

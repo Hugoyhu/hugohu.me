@@ -30,7 +30,6 @@ function getMDXFiles(dir) {
   try {
     return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
   } catch (err) {
-    // Directory may not exist in some environments (e.g., empty folder not committed)
     return [];
   }
 }

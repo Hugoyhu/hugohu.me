@@ -14,8 +14,8 @@
 letterpaper,
 top=1cm,
 bottom=1in,
-left=2cm,
-right=2cm
+left=1.8cm,
+right=1.8cm
 }
 
 \setcounter{secnumdepth}{0} % remove section numbering
@@ -78,17 +78,25 @@ right=2cm
 
 %== HEADER ==%
 \begin{center}
-    {\fontsize{36}{36}\selectfont\interthin HUGO \interheavy HU} \\ \bigskip
+    {\fontsize{32}{32}\selectfont\interthin HUGO \interheavy HU} \\ \bigskip
     {\color{icnclr}\faEnvelope[regular]} \href{mailto:hugo@hugohu.me}{hugo@hugohu.me} $|$ 
     {\color{icnclr}\faGithub} \href{https://github.com/Hugoyhu}{Hugoyhu} $|$
-    {\color{icnclr}\faLinkedinIn} \href{https://www.linkedin.com/in/hugo-hu-a4a67821a/}{Hugo Hu}
+    {\color{icnclr}\faLinkedinIn} \href{https://www.linkedin.com/in/hugo-hu-a4a67821a/}{Hugo Hu} $|$
+    {\color{icnclr}\faPhone[regular]} (646) 477-8119
 \end{center}
 
 \section{Education}
 %==============
-\subsection{Stuyvesant High School \hfill 2026}
+\subsection{Stony Brook University \hfill May 2030}
 \begin{itemize}
+    \item B.S. Candidate in Computer Science
+    \item Honors College \textbar\ Honors in Computer Science Program
+\end{itemize}
+\subsection{Stuyvesant High School \hfill June 2026}
+\begin{itemize}
+    \item Excellence in Mathematics Award \hfill GPA: 97.64/100
     \item Clubs: Stuyvesant Math Team, Mu Alpha Theta, Spectator Photos, Indicator Photos
+    \item Relevant Coursework: AP Physics C (Mech \& E/M), AP Calculus BC, Linear Algebra, Cybersecurity
 \end{itemize}
 
 
@@ -97,56 +105,72 @@ right=2cm
 \subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
 \subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
 \begin{itemize}
-    \item Trained and improved ML network for lung cancer CT deformable image registration
-    \item Wrote MATLAB and Python preprocessing and testing code
+    \item Trained and improved a CNN/LSTM deformable image registration neural network, aligning variable-timepoint cone-beam CT scans to a planning CT reference for lung cancer treatment monitoring
+    \item Experimented with a multi-head attention architecture for the same task, achieving performance comparable to CNN/LSTM neural network and VoxelMorph baselines
+    \item Wrote MATLAB and Python preprocessing and testing code for training datasets 
+    \item Ran training and inference on HPC clusters, and configured CUDA environments for compatibility
 \end{itemize}
 \subsubsection{Summer Intern \hfill July 2024 - August 2024}
 \begin{itemize}
-    \item Wrote C\# and Python preprocessing code to prepare data for head/neck cancer CT scan segmentation training 
+    \item Wrote C\# and Python data preprocessing code for head/neck cancer CT segmentation training for automatic radiotherapy treatment tracking via MSK AWARE
+    \item Gained familiarity with HPC interfacing and IBM LSF protocols
 \end{itemize}
 
 \subsection{Hack Club \hfill Shelburne, VT and Remote}
-\subsubsection{Hardware Engineering Intern \hfill April 2022 - March 2024}
+\subsubsection{Logistics and Hardware Engineering Intern \hfill July 2021 - March 2024}
 \begin{itemize}
-    \item Assisted dozens of HS students in creating their first PCB through the Onboard PCB Grant Program, offering technical expertise and design reviews
-    \item Designed open-source and documented reference designs for NFC tags and USB hubs
-    \item Designed motor controller board and USB-C Power Delivery power supply unit for Blot, a 2D CNC plotting machine
-    \item Designed mainboard for Sprig, a RP2040-based handheld gaming console
+    \item Built a mail address database implementing USPS Intelligent Mail Barcode (IMb) for no-cost letter tracking, introducing discounted commercial postage pricing capability
+    \item Provided technical expertise and design reviews to dozens of HS students creating their first PCB
+    \item Designed open-source project designs, including a 2D CNC motor control board, USB-C Power Delivery power supply unit, and handheld gaming console
+    \item Published open-source reference designs and documentation for NFC tags and USB hubs
+    \item Responsible for the manufacture and mailing of over a thousand hardware kits, shipped globally
+    \item Helped organize in-person hackathons in New York City, Vermont, and San Francisco
 \end{itemize}
-\subsubsection{Mail Team Coordinator and Events \hfill July 2021 - June 2023}
-\begin{itemize}
-    \item Developed mailing software with an address database to implement USPS Intelligent Mail Barcode and access cheaper commercial pricing 
-    \item Helped organized in-person hackathons in NYC, Vermont, and San Francisco
-\end{itemize}
+
+
+% \subsubsection{Mail Team Coordinator and Events \hfill July 2021 - June 2023}
+% \begin{itemize}
+%     \item Designed and built a mailing address database and software system implementing the USPS Intelligent Mail Barcode standard, enabling eligibility for discounted commercial postage pricing
+%     \item Helped organize in-person hackathons in NYC, Vermont, and San Francisco
+% \end{itemize}
+% \subsubsection{Hardware Engineering Intern \hfill April 2022 - March 2024}
+% \begin{itemize}
+%     \item Assisted dozens of HS students in creating their first PCB through the Onboard PCB Grant Program, offering technical expertise and design reviews
+%     \item Designed open-source and documented reference designs for NFC tags and USB hubs
+%     \item Designed motor controller board and USB-C Power Delivery power supply unit for Blot, a 2D CNC plotting machine
+%     \item Designed mainboard for Sprig, a RP2040-based handheld gaming console
+% \end{itemize}
 
 \section{Projects}
 %=================
-\subsection{Personal Site with Photography Portfolio {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
+
+\subsection{Personal Site Platform {\normalfont $|$ NextJS, Supabase, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
 \begin{itemize}
-    \item Built personal site with a photography portfolio with nextJS, Supabase, Cloudinary CDN
-    \item Designed a built-in inventory tracker for electronic components
-\end{itemize}
-\subsection{SAMD21 Corginator {\normalfont $|$ \href{https://github.com/Hugoyhu/SAMD21-Corginator}{\textit{GitHub}}} \hfill 2024}
-\begin{itemize}
-    \item Designed and built a SAMD21-powered corgi-shaped Arduino
+    \item \textbf{Personal Site and Photography Portfolio:} Built a personal site with a dynamically-updating photography portfolio, with a NextAuth-secured admin dashboard and shared SQL query APIs
+    \item \textbf{Component Inventory Platform:} Built an inventory manager for electronic components using shared UI interface and SQL query APIs, providing a secured login portal, PDF asset label generation, barcode scanner input, and line item component search and modify capability
 \end{itemize}
 
-\subsection{USB2.0 Type-C Hub {\normalfont $|$ \href{https://github.com/Hugoyhu/SL2.1A-Type-C-Hub}{\textit{GitHub}}} \hfill 2023}
+\subsection{SAMD21 Corginator {\normalfont $|$ KiCAD, CircuitPython} {\normalfont $|$ \href{https://github.com/Hugoyhu/SAMD21-Corginator}{\textit{GitHub}}} \hfill 2024}
 \begin{itemize}
-    \item Designed and built an open source reference design for a four port USB hub
+    \item Designed and built a corgi-shaped microcontroller development board with the Microchip ATSAMD21 chipset, compatible with Arduino IDE and CircuitPython, with e-marked USB-C support
 \end{itemize}
 
-\subsection{NXP NTAG I2C NFC Evaluation Board {\normalfont $|$ \href{https://github.com/Hugoyhu/NTAG-I2C-Eval-Board}{\textit{GitHub}}} \hfill 2023}
-\begin{itemize}
-    \item Designed an open source reference design for NFC-enabled business cards
-\end{itemize}
+% \subsection{USB2.0 Type-C Hub {\normalfont $|$ \href{https://github.com/Hugoyhu/SL2.1A-Type-C-Hub}{\textit{GitHub}}} \hfill 2023}
+% \begin{itemize}
+%     \item Designed and assembled an open source reference design for a four port USB hub with battery charging USB-C Power Delivery negotiation 
+% \end{itemize}
 
-\section{Skills, Interests \& Awards}
-%===============================
-\begin{enumerate}[itemsep=0pt]
-  \item \b{Technical}: KiCAD, C, C++, Python, nextJS, HTML/CSS, LaTeX
-  \item \b{Laboratory}: Soldering, reflow, and rework equipment 
-  \item \b{Awards}: Gold President's Volunteer Service Award
-\end{enumerate}
+% \subsection{NXP NTAG I2C NFC Evaluation Board {\normalfont $|$ \href{https://github.com/Hugoyhu/NTAG-I2C-Eval-Board}{\textit{GitHub}}} \hfill 2023}
+% \begin{itemize}
+%     \item Designed an open source reference design for NFC-enabled business cards
+% \end{itemize}
+
+% \section{Skills, Interests \& Awards}
+% %===============================
+% \begin{enumerate}[itemsep=0pt]
+%   \item \b{Technical}: KiCAD, C, C++, Python, nextJS, HTML/CSS, LaTeX
+%   \item \b{Laboratory}: Soldering, reflow, and rework equipment 
+%   \item \b{Awards}: AIME Qualifier (3x), CEMC Euclid/Fermat School Top Scorer (2025), Gold President's Volunteer Service Award
+% \end{enumerate}
 
 \end{document}

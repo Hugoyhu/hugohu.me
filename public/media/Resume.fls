@@ -1,8 +1,8 @@
-PWD /Users/hugohu/Documents/hugohu.me/site/public/media
+PWD /Users/hugohu/Documents/hugohu.me/public/media
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/hugohu/Documents/hugohu.me/site/public/media/Resume.tex
+INPUT /Users/hugohu/Documents/hugohu.me/public/media/Resume.tex
 OUTPUT Resume.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -194,6 +194,11 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomebran
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomebrands0.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomebrands0.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/fontawesome5/fa5brands0.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/fontawesome5/fa5free2regular.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/fontawesome5/fa5free2solid.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-t1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Black-tlf-t1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-SemiBold-tlf-t1.tfm
@@ -206,6 +211,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Italic-tlf-t1.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Bold-tlf-t1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Thin-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Thin-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -216,6 +222,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.e
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Regular-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands0.enc
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free2.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Black-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Black-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-SemiBold-tlf-t1.vf
@@ -225,12 +232,18 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tl
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_6zlbe6.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Medium-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Medium-tlf-t1--base.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Regular-tlf-t1.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Italic-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Italic-tlf-t1--base.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Bold-tlf-t1.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Bold-tlf-t1--base.tfm
 INPUT Resume.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Regular.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb
