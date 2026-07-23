@@ -15,14 +15,14 @@ export default function Page() {
           In my free time, I love photography, cooking, and PCB design. `}
         </p> */}
         <p className="mb-4">
-          {`Hi! I'm a freshman at Stony Brook University, where I will pursue
-          a double major in Computer Science (Honors) and Applied Math & Statistics, with a minor in 
+          {`Hi! I'm a first-year undergraduate at Stony Brook University, where I will pursue
+          a major in Computer Science (Honors), and explore a double major in Applied Math & Statistics with a minor in 
           Political Science. I am also a member of the Honors College. In my free time, I love photography,
           cooking, and designing PCBs.`}
         </p>
         <p className="mb-4">
           {`Previously, I've conducted research at MSKCC on machine learning
-        models performing deformable image registration. I've also worked for Hack Club as a
+        models performing CNN-based deformable image registration. I've also worked for Hack Club as a
         hardware engineering and logistics intern, designing PCBs for CNC plotting machines and
         handheld game consoles.`}
         </p>

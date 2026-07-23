@@ -3,7 +3,7 @@
 % Link: https://github.com/subidit/rover-resume
 %------------------------
 
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage{inter} % https://tug.org/FontCatalogue/
@@ -12,10 +12,10 @@
 \usepackage{geometry}
 \geometry{
 letterpaper,
-top=1cm,
-bottom=1cm,
-left=1.8cm,
-right=1.8cm
+top=.4in,
+bottom=.4in,
+left=.5in,
+right=.5in,
 }
 
 \setcounter{secnumdepth}{0} % remove section numbering
@@ -34,6 +34,7 @@ right=1.8cm
 }
 \setlist[description]{itemsep=0pt}
 \setlist[enumerate]{align=left}
+\setlist[itemize,2]{noitemsep, topsep=0pt, parsep=0pt, leftmargin=1.2em}
 
 \usepackage{titlesec}
 % \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
@@ -78,23 +79,23 @@ right=1.8cm
 
 %== HEADER ==%
 \begin{center}
-    {\fontsize{42}{42}\selectfont\interthin HUGO \interheavy HU} \\ \bigskip
+    {\fontsize{30}{30}\selectfont\interthin HUGO \interheavy HU} \\ \bigskip
     {\color{icnclr}\faEnvelope[regular]} \href{mailto:hugo@hugohu.me}{hugo@hugohu.me} $|$ 
     {\color{icnclr}\faGithub} \href{https://github.com/Hugoyhu}{Hugoyhu} $|$
-    {\color{icnclr}\faLinkedinIn} \href{https://www.linkedin.com/in/hugo-hu-a4a67821a/}{Hugo Hu} $|$
+    {\color{icnclr}\faLinkedinIn} \href{https://www.linkedin.com/in/hugo-hu-a4a67821a/}{https://www.linkedin.com/in/hugo-hu-a4a67821a/} $|$
     {\color{icnclr}\faPhone[regular]} (646) 477-8119
 \end{center}
 
 \section{Education}
 %==============
-\subsection{Stony Brook University \hfill May 2030}
+\subsection{Stony Brook University \hfill Stony Brook, NY}
 \begin{itemize}
-    \item B.S. Candidate in Computer Science
+    \item B.S. Candidate in Computer Science \textbar\ Sophomore Standing \hfill \textit{May 2030}
     \item Honors College \textbar\ Honors in Computer Science Program
 \end{itemize}
-\subsection{Stuyvesant High School \hfill June 2026}
+\subsection{Stuyvesant High School \hfill New York, NY}
 \begin{itemize}
-    \item Excellence in Mathematics Award \hfill GPA: 97.64/100
+    \item Excellence in Mathematics Award \hfill GPA: \textit{97.64/100}
     \item Clubs: Stuyvesant Math Team, Mu Alpha Theta Math Honor Society, Spectator / Indicator Photos
     \item Relevant Coursework: AP Physics C (Mech \& E/M), AP Calculus BC, Linear Algebra, Cybersecurity
 \end{itemize}
@@ -105,26 +106,26 @@ right=1.8cm
 \subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
 \subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
 \begin{itemize}
-    \item Trained and improved a CNN/LSTM deformable image registration neural network, aligning variable-timepoint cone-beam CT scans to a planning CT reference for lung cancer treatment monitoring
-    \item Experimented with a multi-head attention architecture for the same task, achieving performance comparable to CNN/LSTM neural network and VoxelMorph baselines
-    \item Wrote MATLAB and Python preprocessing and testing code for training datasets 
-    \item Ran training and inference on HPC clusters, and configured CUDA environments for compatibility
+    \item Trained and improved a CNN-based deformable image registration model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring
+    \item Experimented with a multi-head attention architecture for DIR, achieving performance comparable to CNN-based and VoxelMorph baselines
+    \item Wrote MATLAB and Python preprocessing and testing code used for preparing training datasets 
+    \item Ran training and inference on HPC clusters and configured CUDA environments for training compatibility
 \end{itemize}
 \subsubsection{Summer Intern \hfill July 2024 - August 2024}
 \begin{itemize}
-    \item Wrote C\# and Python data preprocessing code for head/neck cancer CT segmentation training for automatic radiotherapy treatment tracking via MSK AWARE
-    \item Gained familiarity with HPC interfacing and IBM LSF protocols
+    \item Wrote C\# and Python preprocessing code for head and neck cancer CT segmentation training used in radiotherapy treatment tracking
+    \item Used HPC clusters and IBM LSF (bsub) for job scheduling
 \end{itemize}
 
 \subsection{Hack Club \hfill Shelburne, VT and Remote}
 \subsubsection{Logistics and Hardware Engineering Intern \hfill July 2021 - March 2024}
 \begin{itemize}
-    \item Built a mail address database implementing USPS Intelligent Mail Barcode (IMb) for no-cost letter tracking, introducing discounted commercial postage pricing access
-    \item Developed low-cost mailing capability, reducing domestic costs by 40\% and int'l costs by 80\%
-    \item Provided technical expertise and design reviews to dozens of HS students creating their first PCB
-    \item Designed open-source project designs, including a 2D CNC motor control board, USB-C Power Delivery power supply unit, and handheld battery-powered gaming console
+    \item Built a mailing address database implementing USPS Intelligent Mail Barcode (IMb), enabling no-cost letter tracking and discounted commercial postage 
+    \item Reduced domestic shipping costs by up to 60\% and international shipping costs by up to 80\%
+    \item Mentored dozens of high school students through first-time PCB design reviews
+    \item Designed open-source hardware including a 2D CNC motor controller, USB-C Power Delivery supply, and handheld gaming console
     \item Published open-source reference designs and documentation for NFC tags and USB hubs
-    \item Responsible for the manufacture and mailing of over a thousand hardware kits, shipped globally
+    \item Managed the manufacture and global mailing of 1000+ hardware kits
     \item Helped organize in-person hackathons in New York City, Vermont, and San Francisco
 \end{itemize}
 
@@ -147,13 +148,15 @@ right=1.8cm
 
 \subsection{Personal Site Platform {\normalfont $|$ NextJS, Supabase, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
 \begin{itemize}
-    \item \textbf{Personal Site and Photography Portfolio:} Built a personal site with a dynamically-updating photography portfolio, with a NextAuth-secured admin dashboard and shared SQL query APIs
-    \item \textbf{Component Inventory Platform:} Built an inventory manager for electronic components using shared UI interface and SQL query APIs, providing a secured login portal, PDF asset label generation, barcode scanner input, and line item component search and modify capability
+    \item \textbf{Personal Site and Photography Portfolio:} 
+        Built a Next.js personal website with a dynamic photography portfolio, NextAuth-secured admin dashboard, and shared SQL APIs
+    \item \textbf{Component Inventory Platform:} 
+        Buitl a secure inventory manager with SQL-backed search, barcode scanning, PDF label generation, and component management
 \end{itemize}
 
 \subsection{SAMD21 Corginator {\normalfont $|$ KiCAD, CircuitPython} {\normalfont $|$ \href{https://github.com/Hugoyhu/SAMD21-Corginator}{\textit{GitHub}}} \hfill 2024}
 \begin{itemize}
-    \item Designed and built a corgi-shaped microcontroller development board with the Microchip ATSAMD21 chipset, compatible with Arduino IDE and CircuitPython, with e-marked USB-C support
+    \item Designed a corgi-shaped ATSAMD21 development board with e-marked USB-C compatibility and support for Arduino IDE and CircuitPython
 \end{itemize}
 
 % \subsection{USB2.0 Type-C Hub {\normalfont $|$ \href{https://github.com/Hugoyhu/SL2.1A-Type-C-Hub}{\textit{GitHub}}} \hfill 2023}
@@ -166,12 +169,20 @@ right=1.8cm
 %     \item Designed an open source reference design for NFC-enabled business cards
 % \end{itemize}
 
-% \section{Skills, Interests \& Awards}
-% %===============================
-% \begin{enumerate}[itemsep=0pt]
-%   \item \b{Technical}: KiCAD, C, C++, Python, nextJS, HTML/CSS, LaTeX
-%   \item \b{Laboratory}: Soldering, reflow, and rework equipment 
-%   \item \b{Awards}: AIME Qualifier (3x), CEMC Euclid/Fermat School Top Scorer (2025), Gold President's Volunteer Service Award
-% \end{enumerate}
+\section{Skills \& Awards}
+%===============================
+\vspace{-0.6\baselineskip}
+\paragraph{Languages:} C, C++, Python, MATLAB, C\#, Java\\
+\vspace{-2.1\baselineskip}
+\paragraph{Frameworks:} Next.js, HTMl/CSS, Supabase\\
+\vspace{-2.1\baselineskip}
+\paragraph{Tools :} Git, Linux, KiCAD, LaTeX\\
+\vspace{-2.1\baselineskip}
+\paragraph{Laboratory:} Soldering, reflow, and rework equipment\\
+\vspace{-2.1\baselineskip}
+\paragraph{Awards:} AIME Qualifier (3$\times$), CEMC Euclid/Fermat School Winner (2025), Gold President's Volunteer Service Award
+% \subsection*{Technical: {\normalfont KiCAD, C, C++, Python, Next.JS, HTML/CSS, LaTeX}} 
+% \subsection*{Laboratory: {\normalfont Soldering, reflow, and rework equipment}} 
+% \subsection*{Awards: {\normalfont AIME Qualifier (3x), CEMC Euclid/Fermat School Winner (2025), Gold PVSA}} 
 
 \end{document}
