@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1784839303.6481 "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" "Resume.pdf" "Resume" 1784839304.33019 0
-  "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" 1784839302.76362 8778 85002d6c37bf4c1b9d18c39c406fee3b ""
+["pdflatex"] 1786159574.32054 "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" "Resume.pdf" "Resume" 1786159575.09993 0
+  "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" 1786159574.03206 9449 7a5b91872bae3a6bbec271b3f967fff8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands0.enc" 1622837620 2920 d63721872b8c77041b88e51b8f7c291d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc" 1622837620 3042 0e2b14b9be7d01075a4c4591d5d1781b ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free2.enc" 1622837620 2906 e48aa7c95dea478a2e011bcb4f7878c9 ""
@@ -139,8 +139,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1762906687 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Resume.aux" 1784839304.14089 2602 3d3629092c759595dc535e0b55c63ba9 "pdflatex"
-  "Resume.tex" 1784839302.76362 8778 85002d6c37bf4c1b9d18c39c406fee3b ""
+  "Resume.aux" 1786159574.90267 2542 5d43c926d6b7745dfcfbe83aba879c39 "pdflatex"
+  "Resume.tex" 1786159574.03206 9449 7a5b91872bae3a6bbec271b3f967fff8 ""
   (generated)
   "Resume.aux"
   "Resume.log"

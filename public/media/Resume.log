@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  23 JUL 2026 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 AUG 2026 21:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -817,15 +817,15 @@ LaTeX Font Info:    ... okay on input line 78.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(36.135pt, 542.02501pt, 36.135pt)
-* v-part:(T,H,B)=(28.90755pt, 737.15489pt, 28.90755pt)
+* h-part:(L,W,R)=(32.52127pt, 549.25246pt, 32.52127pt)
+* v-part:(T,H,B)=(25.29494pt, 744.38011pt, 25.29494pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=542.02501pt
-* \textheight=737.15489pt
-* \oddsidemargin=-36.135pt
-* \evensidemargin=-36.135pt
-* \topmargin=-80.36244pt
+* \textwidth=549.25246pt
+* \textheight=744.38011pt
+* \oddsidemargin=-39.74872pt
+* \evensidemargin=-39.74872pt
+* \topmargin=-83.97505pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -859,13 +859,13 @@ LaTeX Font Info:    ... okay on input line 78.
 )
 Package hyperref Info: Link coloring ON on input line 78.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/n' will be
-(Font)              scaled to size 30.0pt on input line 82.
+(Font)              scaled to size 18.0pt on input line 82.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/thin/n' aliased to
 (Font)              `T1/Inter-TLF/ul/n' on input line 82.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ul/n' will be
-(Font)              scaled to size 30.0pt on input line 82.
+(Font)              scaled to size 18.0pt on input line 82.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
-(Font)              scaled to size 30.0pt on input line 82.
+(Font)              scaled to size 18.0pt on input line 82.
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on input line 83.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd)
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -911,7 +911,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
 (Font)              scaled to size 12.0pt on input line 149.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 151.
+(Font)              scaled to size 10.0pt on input line 189.
 
 
 [1
@@ -923,18 +923,18 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 16540 strings out of 473190
- 287771 string characters out of 5715801
- 669101 words of memory out of 5000000
+ 16539 strings out of 473190
+ 287756 string characters out of 5715801
+ 669059 words of memory out of 5000000
  39562 multiletter control sequences out of 15000+600000
  651443 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,508b,465s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Resume.pdf (1 page, 375733 bytes).
+Output written on Resume.pdf (1 page, 362433 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 20 named destinations out of 1000 (max. 500000)
+ 102 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
