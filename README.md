@@ -21,7 +21,7 @@ My site is hosted on Vercel, free of charge, and I use Porkbun for my domain.
 
 My photography portfolio (version three) fetches reduced-size previews from Cloudinary each time it is loaded. The EXIF data is shown for each photograph, as well as its title. Photographs may be viewed in one of three ways: a small "featured" subset, or grouped by collection or category.
 
-## ```.env``` and cloud setup
+### ```.env``` and cloud setup
 
 Some services on my website, including my photography portfolio, requires the use of a database. I use Supabase to host a PostgreSQL instance, and I have shared query API wrappers that interface with Supabase.
 
@@ -73,7 +73,7 @@ You'll also need to setup the tables with the following columns:
 #### Photo Table
 
 | column name | data type |
-|-|-|
+| - | - |
 | url | text |
 | camera_model | text |
 | lens | text |
@@ -91,7 +91,7 @@ You'll also need to setup the tables with the following columns:
 #### Inventory Table
 
 | column name | data type |
-|-|-|
+| - | - |
 | name | text |
 | category | text |
 | subcategory | text |
