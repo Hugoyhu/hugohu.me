@@ -38,7 +38,7 @@ right=.45in,
 
 \usepackage{titlesec}
 % \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
-\titlespacing{\section}{0pt}{*3}{*3}
+\titlespacing{\section}{0pt}{*1.5}{*1.5}
 \titlespacing{\subsection}{0pt}{*0}{*0}
 \titlespacing{\subsubsection}{0pt}{*0}{*0}
 % \titleformat{<command>}[<shape>]{<format>}{<label>}{<sec>}{<before-code>}[<after-code>]  
@@ -96,8 +96,8 @@ right=.45in,
 \subsection{Stuyvesant High School \hfill New York, NY}
 \begin{itemize}
     \item Excellence in Mathematics Award \hfill GPA: \textit{97.64/100}
-    \item Clubs: Stuyvesant Math Team, Mu Alpha Theta Math Honor Society, Spectator / Indicator Photos
-    \item Relevant Coursework: AP Physics C (Mech \& E/M), AP Calculus BC, Linear Algebra, Cybersecurity
+    \item Clubs: Stuyvesant Math Team, Mu Alpha Theta Mathematics Honor Society, Spectator / Indicator Photos
+    \item Relevant Coursework: AP Calculus BC, Linear Algebra, Cybersecurity, AP Physics C (Mech \& E/M)
 \end{itemize}
 
 
@@ -106,8 +106,8 @@ right=.45in,
 \subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
 \subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
 \begin{itemize}
-    \item Trained and improved a CNN-based deformable image registration model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring with validation DICE score over 0.75
-    \item Experimented with a multi-head attention architecture for DIR, achieving parity with CNN and VoxelMorph baselines 
+    \item Fine-tuned and validated a CNN-based deformable image registration (DIR) model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring, achieving validation DICE score over 0.75
+    \item Experimented with a multi-head attention architecture for DIR, reaching parity with CNN and VoxelMorph baselines
     \item Wrote MATLAB and Python preprocessing and testing code used for preparing training datasets 
     \item Ran training and inference on HPC clusters and configured CUDA environments for training compatibility
 \end{itemize}
@@ -118,60 +118,33 @@ right=.45in,
 \end{itemize}
 
 \subsection{Hack Club \hfill Shelburne, VT and Remote}
-\subsubsection{Logistics and Hardware Engineering Intern \hfill July 2021 - March 2024}
+\subsubsection{Hardware Engineering Intern \hfill May 2022 - March 2024}
 \begin{itemize}
-    \item Built a mailing address database with USPS IMb, enabling no-cost letter tracking and commercial postage 
-    \item Reduced domestic shipping costs by up to 60\% and international shipping costs by up to 80\%
-    \item Mentored dozens of high school students through first-time PCB design reviews
-    \item Designed open-source 2D CNC motor control board, USB-C Power Delivery sink, and handheld gaming console
-    \item Published open-source reference designs and documentation for NFC tags and USB hubs
-    \item Managed the manufacture and global mailing of 800+ hardware kits
-    % \item Helped organize in-person hackathons in New York City, Vermont, and San Francisco
+    \item Designed and prototyped production PCBs for Blot (2D CNC drawing machine) and Sprig (RP2040-based handheld gaming console), including motor control and USB-C PD boards; Sprig reached a 600+ unit production run
+    \item Published open-source reference designs adopted by the maker community (NXP/NTAG I2C NFC board, USB hub with USB-C implementation guide) and mentored dozens of high schoolers through first-time PCB design as part of the Onboard program
+\end{itemize}
+\subsubsection{Logistics and Operations Intern \hfill July 2021 - August 2023}
+\begin{itemize}
+    \item Built a mailing address database using USPS Intelligent Mail Barcode (IMb), enabling no-cost trackable postage; reduced domestic shipping costs up to 60\% and international costs up to 80\%, including devising alternate routing through regional trade disruptions
+    \item Integrated the Shippo API into a Slack-based shipping agent to automate label generation and cost comparison
+    \item Supported operations for in-person hackathons in San Francisco (approx.\ 150 attendees), Vermont, and New York
 \end{itemize}
 
-
-% \subsubsection{Mail Team Coordinator and Events \hfill July 2021 - June 2023}
-% \begin{itemize}
-%     \item Designed and built a mailing address database and software system implementing the USPS Intelligent Mail Barcode standard, enabling eligibility for discounted commercial postage pricing
-%     \item Helped organize in-person hackathons in NYC, Vermont, and San Francisco
-% \end{itemize}
-% \subsubsection{Hardware Engineering Intern \hfill April 2022 - March 2024}
-% \begin{itemize}
-%     \item Assisted dozens of HS students in creating their first PCB through the Onboard PCB Grant Program, offering technical expertise and design reviews
-%     \item Designed open-source and documented reference designs for NFC tags and USB hubs
-%     \item Designed motor controller board and USB-C Power Delivery power supply unit for Blot, a 2D CNC plotting machine
-%     \item Designed mainboard for Sprig, a RP2040-based handheld gaming console
-% \end{itemize}
 
 \section{Projects}
 %=================
 
 \subsection{Personal Site and Photography Portfolio {\normalfont $|$ Next.js, Tailwind CSS, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
 \begin{itemize}
-    \item Designed a performant static site using Next.js, Tailwind CSS, and Vercel, featuring EXIF metadata rendering and flexible category / collection filtering
-    \item Implemented an authenticated administrator dashboard with NextAuth and Bcrypt, using Cloudinary CDN for dynamic asset delivery and a Supabase PostgreSQL backend via custom API wrappers
+    \item Designed a performant static site with EXIF metadata rendering and flexible category / collection filtering
+    \item Implemented an authenticated admin dashboard (NextAuth, Bcrypt) with Cloudinary CDN asset delivery and a Supabase PostgreSQL backend via custom API wrappers
 \end{itemize}
 
 \subsection{Component Inventory Manager {\normalfont $|$ Next.js, PostgreSQL (Supabase), NextAuth} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
 \begin{itemize}
-    \item Created a full-stack inventory tracking system using Next.js and Supabase PostgreSQL to manage electronic components, manufacturer MPNs, distributor data, and generate asset ID labels
-    \item Built API wrappers to query, create, and update electronic components by MPN, description, and category
+    \item Built a full-stack inventory tracking system to manage electronic components, MPNs, and distributor data, and generate asset ID labels
+    \item Built API wrappers to query, create, and update components by MPN, description, and category
 \end{itemize}
-
-% \subsection{SAMD21 Corginator {\normalfont $|$ KiCAD, CircuitPython} {\normalfont $|$ \href{https://github.com/Hugoyhu/SAMD21-Corginator}{\textit{GitHub}}} \hfill 2024}
-% \begin{itemize}
-%     \item Designed a corgi-shaped ATSAMD21 development board with e-marked USB-C compatibility and support for Arduino IDE and CircuitPython
-% \end{itemize}
-
-% \subsection{USB2.0 Type-C Hub {\normalfont $|$ \href{https://github.com/Hugoyhu/SL2.1A-Type-C-Hub}{\textit{GitHub}}} \hfill 2023}
-% \begin{itemize}
-%     \item Designed and assembled an open source reference design for a four port USB hub with the SL2.1A chipset, paired with a beginner-friendly guide to hardware design with USB Type-C
-% \end{itemize}
-
-% \subsection{NXP NTAG I2C NFC Evaluation Board {\normalfont $|$ \href{https://github.com/Hugoyhu/NTAG-I2C-Eval-Board}{\textit{GitHub}}} \hfill 2023}
-% \begin{itemize}
-%     \item Designed an open source reference design for NFC-enabled business cards
-% \end{itemize}
 
 \section{Awards \& Honors}
 %===============================
@@ -181,7 +154,6 @@ right=.45in,
     \item CEMC Euclid/Fermat School Winner (2025)
     \item Gold President's Volunteer Service Award
 \end{itemize}
-% \paragraph{Awards:} AIME Qualifier (3x), CEMC Euclid/Fermat School Winner (2025), Gold President's Volunteer Service Award
 
 \section{Skills}
 %===============================
@@ -192,9 +164,5 @@ right=.45in,
 \vspace{-2.1\baselineskip}
 \paragraph{Tools :} Git, Linux, KiCAD, LaTeX\\
 \vspace{-2.1\baselineskip}
-% \paragraph{Laboratory:} Soldering, reflow, and rework equipment\\
-% \subsection*{Technical: {\normalfont KiCAD, C, C++, Python, Next.JS, HTML/CSS, LaTeX}} 
-% \subsection*{Laboratory: {\normalfont Soldering, reflow, and rework equipment}} 
-% \subsection*{Awards: {\normalfont AIME Qualifier (3x), CEMC Euclid/Fermat School Winner (2025), Gold PVSA}} 
 
 \end{document}
