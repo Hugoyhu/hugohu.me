@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 AUG 2026 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 AUG 2026 16:35
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -866,75 +866,63 @@ LaTeX Font Info:    Font shape `T1/Inter-TLF/ul/n' will be
 (Font)              scaled to size 18.0pt on input line 82.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
 (Font)              scaled to size 18.0pt on input line 82.
-LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on input line 83.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd)
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 83.
+(Font)              <7> on input line 84.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 83.
-LaTeX Font Info:    Trying to load font information for U+fontawesomebrands0 on input line 84.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomebrands0.fd)
-LaTeX Font Info:    Font shape `U/fontawesomebrands0/solid/n' in size <10> not available
-(Font)              Font shape `U/fontawesomebrands0/regular/n' tried instead on input line 84.
-LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on input line 86.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd)
-
-Package fontawesome5 Warning: The requested icon phone has been replaced by
-(fontawesome5)                the solid version
-
+(Font)              <5> on input line 84.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 89.
+(Font)              scaled to size 12.0pt on input line 93.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/black/n' aliased to
-(Font)              `T1/Inter-TLF/ub/n' on input line 89.
+(Font)              `T1/Inter-TLF/ub/n' on input line 93.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
-(Font)              scaled to size 12.0pt on input line 89.
+(Font)              scaled to size 12.0pt on input line 93.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/semibold/n' aliased to
-(Font)              `T1/Inter-TLF/sb/n' on input line 91.
+(Font)              `T1/Inter-TLF/sb/n' on input line 95.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/sb/n' will be
-(Font)              scaled to size 12.0pt on input line 91.
-LaTeX Font Info:    Trying to load font information for TS1+Inter-TLF on input line 93.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/inter/TS1Inter-TLF.fd
+(Font)              scaled to size 12.0pt on input line 95.
+LaTeX Font Info:    Trying to load font information for TS1+Inter-TLF on input line 97.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/inter/TS1Inter-TLF.fd
 File: TS1Inter-TLF.fd 2023/11/24 (autoinst) Font definitions for TS1/Inter-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/Inter-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 93.
+(Font)              scaled to size 10.0pt on input line 97.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 93.
+(Font)              scaled to size 10.0pt on input line 97.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/medium/n' will be
-(Font)              scaled to size 12.0pt on input line 107.
+(Font)              scaled to size 12.0pt on input line 111.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 137.
+(Font)              <12> on input line 141.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 137.
+(Font)              <8> on input line 141.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 137.
+(Font)              <6> on input line 141.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 137.
+(Font)              scaled to size 12.0pt on input line 141.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 161.
+(Font)              scaled to size 10.0pt on input line 165.
 
 
 [1
 
-{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_djwlf6.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands0.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free2.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_6zlbe6.enc}] (./Resume.aux)
+{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_djwlf6.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_6zlbe6.enc}] (./Resume.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 16540 strings out of 473190
- 287773 string characters out of 5715801
+ 16479 strings out of 473190
+ 285991 string characters out of 5715801
  670063 words of memory out of 5000000
- 39562 multiletter control sequences out of 15000+600000
- 651443 words of font info for 73 fonts, out of 8000000 for 9000
+ 39517 multiletter control sequences out of 15000+600000
+ 650281 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,508b,465s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Resume.pdf (1 page, 363698 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Resume.pdf (1 page, 337440 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 85 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  20 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
