@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 AUG 2026 16:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 AUG 2026 14:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -745,7 +745,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip57
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 68.
+Package hyperref Info: Option `colorlinks' set `false' on input line 69.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/totalcount/totalcount.sty
 Package: totalcount 2018/01/21 v1.0a Total values of counters (AR)
 \c@totalcount@page=\count292
@@ -767,45 +767,45 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthR=\skip71
 \@temptokenb=\toks23
 )
-LaTeX Font Info:    Trying to load font information for T1+Inter-TLF on input line 78.
+LaTeX Font Info:    Trying to load font information for T1+Inter-TLF on input line 79.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/inter/T1Inter-TLF.fd
 File: T1Inter-TLF.fd 2023/11/24 (autoinst) Font definitions for T1/Inter-TLF.
 )
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 78.
+(Font)              scaled to size 10.0pt on input line 79.
  (./Resume.aux)
 \openout1 = `Resume.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 78.
-LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 78.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 79.
+LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 79.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 78.
-LaTeX Font Info:    Trying to load font information for LY1+ptm on input line 78.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 79.
+LaTeX Font Info:    Trying to load font information for LY1+ptm on input line 79.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/ly1/ly1ptm.fd
 File: ly1ptm.fd 2001/02/01 font definitions for LY1/ptm using Berry names.
 )
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 \c@mv@tabular=\count293
 \c@mv@boldtabular=\count294
 
@@ -857,49 +857,54 @@ LaTeX Font Info:    ... okay on input line 78.
 \makeMPintoPDFobject=\count300
 \everyMPtoPDFconversion=\toks25
 )
-Package hyperref Info: Link coloring ON on input line 78.
+Package hyperref Info: Link coloring OFF on input line 79.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/n' will be
-(Font)              scaled to size 18.0pt on input line 82.
+(Font)              scaled to size 18.0pt on input line 83.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/thin/n' aliased to
-(Font)              `T1/Inter-TLF/ul/n' on input line 82.
+(Font)              `T1/Inter-TLF/ul/n' on input line 83.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ul/n' will be
-(Font)              scaled to size 18.0pt on input line 82.
+(Font)              scaled to size 18.0pt on input line 83.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
-(Font)              scaled to size 18.0pt on input line 82.
+(Font)              scaled to size 18.0pt on input line 83.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 84.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 84.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 93.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/black/n' aliased to
-(Font)              `T1/Inter-TLF/ub/n' on input line 93.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
-(Font)              scaled to size 12.0pt on input line 93.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/semibold/n' aliased to
-(Font)              `T1/Inter-TLF/sb/n' on input line 95.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/sb/n' will be
 (Font)              scaled to size 12.0pt on input line 95.
-LaTeX Font Info:    Trying to load font information for TS1+Inter-TLF on input line 97.
+LaTeX Font Info:    Font shape `T1/Inter-TLF/black/n' aliased to
+(Font)              `T1/Inter-TLF/ub/n' on input line 95.
+LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
+(Font)              scaled to size 12.0pt on input line 95.
+LaTeX Font Info:    Font shape `T1/Inter-TLF/semibold/n' aliased to
+(Font)              `T1/Inter-TLF/sb/n' on input line 97.
+LaTeX Font Info:    Font shape `T1/Inter-TLF/sb/n' will be
+(Font)              scaled to size 12.0pt on input line 97.
+LaTeX Font Info:    Trying to load font information for TS1+Inter-TLF on input line 99.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/inter/TS1Inter-TLF.fd
 File: TS1Inter-TLF.fd 2023/11/24 (autoinst) Font definitions for TS1/Inter-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/Inter-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 97.
+(Font)              scaled to size 10.0pt on input line 99.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 97.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/medium/n' will be
-(Font)              scaled to size 12.0pt on input line 111.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 141.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 141.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 141.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 141.
+(Font)              scaled to size 10.0pt on input line 99.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 165.
+(Font)              scaled to size 10.0pt on input line 112.
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+LaTeX Font Info:    Font shape `T1/Inter-TLF/medium/n' will be
+(Font)              scaled to size 12.0pt on input line 132.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 164.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 164.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 164.
+LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 164.
 
 
 [1
@@ -911,15 +916,15 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 16479 strings out of 473190
- 285991 string characters out of 5715801
- 670063 words of memory out of 5000000
- 39517 multiletter control sequences out of 15000+600000
+ 16476 strings out of 473190
+ 285936 string characters out of 5715801
+ 671070 words of memory out of 5000000
+ 39514 multiletter control sequences out of 15000+600000
  650281 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,508b,465s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,508b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Resume.pdf (1 page, 337440 bytes).
+Output written on Resume.pdf (1 page, 336198 bytes).
 PDF statistics:
  85 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream

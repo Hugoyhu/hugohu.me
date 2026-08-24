@@ -172,7 +172,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/ly1/ly1ptm.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/graphics/color.sty
 OUTPUT Resume.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-t1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Thin-tlf-t1.tfm
@@ -185,6 +184,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/inter/TS1Inter-TLF.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/inter/TS1Inter-TLF.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-ts1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Italic-tlf-t1.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Bold-tlf-t1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Medium-tlf-t1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
@@ -196,7 +196,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Italic-tlf-t1.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Bold-tlf-t1.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Thin-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Thin-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -214,14 +213,14 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tl
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_6zlbe6.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Italic-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Italic-tlf-t1--base.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Bold-tlf-t1.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Bold-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Medium-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Medium-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Regular-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Italic-tlf-t1.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Italic-tlf-t1--base.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Bold-tlf-t1.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Bold-tlf-t1--base.tfm
 INPUT Resume.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb

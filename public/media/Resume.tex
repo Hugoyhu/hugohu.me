@@ -23,7 +23,7 @@ right=.45in,
 
 % \usepackage[dvipsnames, svgnames, x11names]{xcolor} 
 \usepackage[dvipsnames]{xcolor} % xcolor.pdf Sec.4 Colors by Name
-\colorlet{icnclr}{gray}
+\colorlet{icnclr}{black}
 % \colorlet [⟨type⟩]{⟨name⟩}[⟨num model⟩]{⟨color ⟩}
 % \definecolor[⟨type⟩]{⟨name⟩}{⟨model-list⟩}{⟨spec-list⟩}
 
@@ -38,11 +38,11 @@ right=.45in,
 
 \usepackage{titlesec}
 % \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
-\titlespacing{\section}{0pt}{*1.5}{*1.5}
-\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\section}{0pt}{*1.5}{*2.5}
+\titlespacing{\subsection}{0pt}{*0}{*.35}
 \titlespacing{\subsubsection}{0pt}{*0}{*0}
 % \titleformat{<command>}[<shape>]{<format>}{<label>}{<sec>}{<before-code>}[<after-code>]  
-\titleformat{\section}{\color{Sepia}\large\fontseries{black}\selectfont\uppercase}{}{}{\ruleafter}[\global\RemVStrue]
+\titleformat{\section}{\color{black}\large\fontseries{black}\selectfont\uppercase}{}{}{\ruleafter}[\global\RemVStrue]
 \titleformat{\subsection}{\large\fontseries{semibold}\selectfont}{}{}{\rvs}
 \titleformat{\subsubsection}{\large\fontseries{medium}\selectfont}{}{}{}
 
@@ -62,9 +62,10 @@ right=.45in,
 
 \usepackage[bookmarks=false]{hyperref} % [imp!]
 \hypersetup{ % https://en.wikibooks.org/wiki/LaTeX/Hyperlinks
-    colorlinks=true,
-    urlcolor=Sepia,
+    colorlinks=false,
+    urlcolor=Black,
     pdftitle={Hugo Hu Resume},
+    pdfborder={0 0 0},
 }
 
 \usepackage[page]{totalcount}
@@ -80,12 +81,13 @@ right=.45in,
 %== HEADER ==%
 \begin{center}
     {\fontsize{18}{18}\selectfont\interthin HUGO \interheavy HU} \\ \bigskip
+    New York, NY $|$
     % {\color{icnclr}\faEnvelope[regular]} 
     \href{mailto:hugo@hugohu.me}{hugo@hugohu.me} $|$ 
     % {\color{icnclr}\faGithub} 
-    \href{https://github.com/Hugoyhu}{Hugoyhu} $|$
+    \href{https://github.com/Hugoyhu}{github.com/hugoyhu} $|$
     % {\color{icnclr}\faLinkedinIn} 
-    \href{https://www.linkedin.com/in/hugoyhu}{https://www.linkedin.com/in/hugoyhu} $|$
+    \href{https://www.linkedin.com/in/hugoyhu}{linkedin.com/in/hugoyhu} $|$
     % {\color{icnclr}\faPhone[regular]} 
     (646) 477-8119
 \end{center}
@@ -94,61 +96,26 @@ right=.45in,
 %==============
 \subsection{Stony Brook University \hfill Stony Brook, NY}
 \begin{itemize}
-    \item B.S. Candidate in Computer Science \textbar\ Sophomore Standing \hfill \textit{May 2030}
-    \item Honors College \textbar\ Honors in Computer Science Program
+    \item B.S. Computer Science, Sophomore Standing \hfill \textit{Expected May 2030}
+    \item Honors College, Honors in Computer Science Program
 \end{itemize}
 \subsection{Stuyvesant High School \hfill New York, NY}
 \begin{itemize}
-    \item Excellence in Mathematics Award \hfill GPA: \textit{97.64/100}
-    \item Clubs: Stuyvesant Math Team, Mu Alpha Theta Mathematics Honor Society, Spectator / Indicator Photos
-    \item Relevant Coursework: AP Calculus BC, Linear Algebra, Cybersecurity, AP Physics C (Mech \& E/M)
+    \item Excellence in Mathematics Award \hfill \textit{June 2026}
+    % \item Clubs: Stuyvesant Math Team, Mu Alpha Theta Mathematics Honor Society, Spectator / Indicator Photos
+    \item Relevant Coursework: Linear Algebra, AP Calculus BC, Cybersecurity, AP Physics C \hfill GPA: \textit{97.64/100}
 \end{itemize}
 
+\section{Technical Skills}
+%===============================
+\vspace{-0.6\baselineskip}
+\paragraph{Languages:} C, SQL, Python, MATLAB, C\#, Java\\
+\vspace{-2.1\baselineskip}
+\paragraph{Tools:} Git, MongoDB, Supabase / PostgreSQL, KiCAD, LaTeX\\
+\vspace{-2.1\baselineskip}
+\paragraph{Frameworks:} Next.js, Node.js, HTML/CSS\\
 
-\section{Experience}
-%===================
-\subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
-\subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
-\begin{itemize}
-    \item Fine-tuned and validated a CNN-based deformable image registration (DIR) model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring, achieving validation DICE score over 0.75
-    \item Experimented with a multi-head attention architecture for DIR, reaching parity with CNN and VoxelMorph baselines
-    \item Wrote MATLAB and Python preprocessing and testing code used for preparing training datasets 
-    \item Ran training and inference on HPC clusters and configured CUDA environments for training compatibility
-\end{itemize}
-\subsubsection{Summer Intern \hfill July 2024 - August 2024}
-\begin{itemize}
-    \item Wrote C\# and Python preprocessing code for head/neck cancer CT segmentation training for treatment tracking
-    \item Leveraged HPC clusters and IBM LSF (bsub) for job scheduling
-\end{itemize}
-
-\subsection{Hack Club \hfill Shelburne, VT and Remote}
-\subsubsection{Hardware Engineering Intern \hfill May 2022 - March 2024}
-\begin{itemize}
-    \item Designed and prototyped production PCBs for Blot (2D CNC drawing machine) and Sprig (RP2040-based handheld gaming console), including motor control and USB-C PD boards; Sprig reached a 600+ unit production run
-    \item Published open-source reference designs adopted by the maker community (NXP/NTAG I2C NFC board, USB hub with USB-C implementation guide) and mentored dozens of high schoolers through first-time PCB design as part of the Onboard program
-\end{itemize}
-\subsubsection{Logistics and Operations Intern \hfill July 2021 - August 2023}
-\begin{itemize}
-    \item Built a mailing address database using USPS Intelligent Mail Barcode (IMb), enabling no-cost trackable postage; reduced domestic shipping costs up to 60\% and international costs up to 80\%, including devising alternate routing through regional trade disruptions
-    \item Integrated the Shippo API into a Slack-based shipping agent to automate label generation and cost comparison
-    \item Supported operations for in-person hackathons in San Francisco (approx.\ 150 attendees), Vermont, and New York
-\end{itemize}
-
-
-\section{Projects}
-%=================
-
-\subsection{Personal Site and Photography Portfolio {\normalfont $|$ Next.js, Tailwind CSS, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
-\begin{itemize}
-    \item Designed a performant static site with EXIF metadata rendering and flexible category / collection filtering
-    \item Implemented an authenticated admin dashboard (NextAuth, Bcrypt) with Cloudinary CDN asset delivery and a Supabase PostgreSQL backend via custom API wrappers
-\end{itemize}
-
-\subsection{Component Inventory Manager {\normalfont $|$ Next.js, PostgreSQL (Supabase), NextAuth} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
-\begin{itemize}
-    \item Built a full-stack inventory tracking system to manage electronic components, MPNs, and distributor data, and generate asset ID labels
-    \item Built API wrappers to query, create, and update components by MPN, description, and category
-\end{itemize}
+\vspace{-0.5\baselineskip}
 
 \section{Awards \& Honors}
 %===============================
@@ -159,14 +126,53 @@ right=.45in,
     \item Gold President's Volunteer Service Award
 \end{itemize}
 
-\section{Skills}
-%===============================
-\vspace{-0.6\baselineskip}
-\paragraph{Languages:} C, Python, MATLAB, C\#, Java\\
-\vspace{-2.1\baselineskip}
-\paragraph{Frameworks:} Next.js, HTMl/CSS, Supabase\\
-\vspace{-2.1\baselineskip}
-\paragraph{Tools :} Git, Linux, KiCAD, LaTeX\\
-\vspace{-2.1\baselineskip}
+\section{Professional Experience}
+%===================
+\subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
+\subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
+\begin{itemize}
+    \item Fine-tuned and validated a CNN-based deformable image registration (DIR) model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring, achieving validation DICE score over 0.75
+    \item Experimented with a multi-head attention architecture for DIR, reaching parity with CNN and VoxelMorph baselines
+    \item Wrote MATLAB and Python code to preprocess and validate training datasets
+    \item Ran training and inference on HPC clusters and configured CUDA environments for training compatibility
+\end{itemize}
+\subsubsection{Summer Intern, Medical Physics \hfill July 2024 - August 2024}
+\begin{itemize}
+    \item Wrote C\# and Python preprocessing code for head/neck cancer CT segmentation training for treatment tracking
+    \item Leveraged HPC clusters and IBM LSF (bsub) for job scheduling
+\end{itemize}
+
+\subsection{Hack Club \hfill Shelburne, VT and Remote}
+\subsubsection{Hardware Engineering Intern \hfill May 2022 - March 2024}
+\begin{itemize}
+    \item Designed and prototyped production PCBs for Blot (2D CNC drawing machine) and Sprig (RP2040-based handheld gaming console), including motor control and USB-C PD boards; Sprig reached a 600+ unit production run
+    \item Published open-source reference designs adopted by the maker community (NXP/NTAG I2C NFC board, USB hub with USB-C implementation guide) and mentored dozens of high schoolers through first-time PCB design
+\end{itemize}
+\subsubsection{Logistics and Operations Intern \hfill July 2021 - August 2023}
+\begin{itemize}
+    \item Built a mailing address database using USPS Intelligent Mail Barcode (IMb), enabling no-cost trackable postage
+    \item Reduced domestic shipping costs up to 60\% and international costs up to 80\%, including devising alternate routing through regional trade disruptions
+    \item Integrated the Shippo API into a Slack-based shipping agent to automate label generation and cost comparison
+    \item Planned and managed on-the-ground logistics with organizers and sourced affordable and high-quality merchandise for in-person hackathons in San Francisco (approx.\ 150 attendees), Vermont, and New York
+\end{itemize}
+
+
+\section{Projects}
+%=================
+
+
+\subsection{Personal Site and Photography Portfolio {\normalfont $|$ Next.js, Tailwind CSS, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
+\begin{itemize}
+    \item Designed a performant Next.js photography site with Cloudinary CDN delivery and EXIF-based filtering, cutting image load times and simplifying browsing across collections
+    \item Built a secure authenticated admin dashboard (NextAuth, Bcrypt) backed by Supabase PostgreSQL, enabling non-technical content updates without redeploying the site
+\end{itemize}
+
+\subsection{Component Inventory Manager {\normalfont $|$ Next.js, PostgreSQL (Supabase), NextAuth} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
+\begin{itemize}
+    \item Implemented a full-stack Next.js/Supabase system to manage electronic components, MPNs, and distributor data, with a barcode-scanner-compatible search tool for fast lookups
+    \item Generated thermal-printable asset ID labels to tag and organize components, streamlining inventory retrieval
+\end{itemize}
+
+
 
 \end{document}
