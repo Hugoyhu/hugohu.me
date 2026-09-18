@@ -12,10 +12,10 @@
 \usepackage{geometry}
 \geometry{
 letterpaper,
-top=.35in,
-bottom=.35in,
-left=.45in,
-right=.45in,
+top=.65in,
+bottom=.65in,
+left=.7in,
+right=.7in,
 }
 
 \setcounter{secnumdepth}{0} % remove section numbering
@@ -39,11 +39,11 @@ right=.45in,
 \usepackage{titlesec}
 % \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
 \titlespacing{\section}{0pt}{*1.5}{*2.5}
-\titlespacing{\subsection}{0pt}{*0}{*.35}
-\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*-.2}{*.35}
+\titlespacing{\subsubsection}{0pt}{*-.8}{*0}
 % \titleformat{<command>}[<shape>]{<format>}{<label>}{<sec>}{<before-code>}[<after-code>]  
 \titleformat{\section}{\color{black}\large\fontseries{black}\selectfont\uppercase}{}{}{\ruleafter}[\global\RemVStrue]
-\titleformat{\subsection}{\large\fontseries{semibold}\selectfont}{}{}{\rvs}
+\titleformat{\subsection}{\large\fontseries{bold}\selectfont}{}{}{\rvs}
 \titleformat{\subsubsection}{\large\fontseries{medium}\selectfont}{}{}{}
 
 \usepackage{xhfill} 
@@ -101,7 +101,7 @@ right=.45in,
 \end{itemize}
 \subsection{Stuyvesant High School \hfill New York, NY}
 \begin{itemize}
-    \item Excellence in Mathematics Award \hfill \textit{June 2026}
+    \item Excellence in Mathematics Award, AIME Qualifier (3x), CEMC Euclid/Fermat School Winner \hfill \textit{June 2026}
     % \item Clubs: Stuyvesant Math Team, Mu Alpha Theta Mathematics Honor Society, Spectator / Indicator Photos
     \item Relevant Coursework: Linear Algebra, AP Calculus BC, Cybersecurity, AP Physics C \hfill GPA: \textit{97.64/100}
 \end{itemize}
@@ -113,47 +113,57 @@ right=.45in,
 \vspace{-2.1\baselineskip}
 \paragraph{Tools:} Git, MongoDB, Supabase / PostgreSQL, KiCAD, LaTeX\\
 \vspace{-2.1\baselineskip}
-\paragraph{Frameworks:} Next.js, Node.js, HTML/CSS\\
+\paragraph{Frameworks:} Next.js, React.js, Express.js, Node.js, HTML/CSS\\
 
-\vspace{-0.5\baselineskip}
+\vspace{-1\baselineskip}
 
-\section{Awards \& Honors}
-%===============================
-\vspace{-0.6\baselineskip}
-\begin{itemize}
-    \item AIME Qualifier (3x)
-    \item CEMC Euclid/Fermat School Winner (2025)
-    \item Gold President's Volunteer Service Award
-\end{itemize}
+% \section{Awards \& Honors}
+% %===============================
+% \vspace{-0.6\baselineskip}
+% \begin{itemize}
+%     \item AIME Qualifier (3x)
+%     \item CEMC Euclid/Fermat School Winner (2025)
+%     \item Gold President's Volunteer Service Award
+% \end{itemize}
 
 \section{Professional Experience}
 %===================
-\subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
-\subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
+\subsection{Stony Brook Campus Residences \hfill Stony Brook, NY}
+\subsubsection{IT and Programming Intern \hfill September 2026 - Present}
 \begin{itemize}
-    \item Fine-tuned and validated a CNN-based deformable image registration (DIR) model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring, achieving validation DICE score over 0.75
-    \item Experimented with a multi-head attention architecture for DIR, reaching parity with CNN and VoxelMorph baselines
-    \item Wrote MATLAB and Python code to preprocess and validate training datasets
-    \item Ran training and inference on HPC clusters and configured CUDA environments for training compatibility
-\end{itemize}
-\subsubsection{Summer Intern, Medical Physics \hfill July 2024 - August 2024}
-\begin{itemize}
-    \item Wrote C\# and Python preprocessing code for head/neck cancer CT segmentation training for treatment tracking
-    \item Leveraged HPC clusters and IBM LSF (bsub) for job scheduling
+    \item Port legacy codebases into unified React/Express.js web interface for tracking asset availability and status
+    \item Perform on-site and remote technical diagnostics, resolving hardware and network issues across campus
 \end{itemize}
 
 \subsection{Hack Club \hfill Shelburne, VT and Remote}
 \subsubsection{Hardware Engineering Intern \hfill May 2022 - March 2024}
 \begin{itemize}
-    \item Designed and prototyped production PCBs for Blot (2D CNC drawing machine) and Sprig (RP2040-based handheld gaming console), including motor control and USB-C PD boards; Sprig reached a 600+ unit production run
-    \item Published open-source reference designs adopted by the maker community (NXP/NTAG I2C NFC board, USB hub with USB-C implementation guide) and mentored dozens of high schoolers through first-time PCB design
+    \item Led design and fabrication of production PCBs for Blot (2D CNC drawing machine) and Sprig (handheld gaming console), overseeing process from prototype to fab; Sprig reached a 600+ unit production run
+    \item Published open-source reference designs adopted by the maker community (NTAG NFC Tag, USB-C Hub)
+    \item Mentored dozens of high schoolers with design review and expertise through first-time PCB design
 \end{itemize}
 \subsubsection{Logistics and Operations Intern \hfill July 2021 - August 2023}
 \begin{itemize}
-    \item Built a mailing address database using USPS Intelligent Mail Barcode (IMb), enabling no-cost trackable postage
-    \item Reduced domestic shipping costs up to 60\% and international costs up to 80\%, including devising alternate routing through regional trade disruptions
-    \item Integrated the Shippo API into a Slack-based shipping agent to automate label generation and cost comparison
-    \item Planned and managed on-the-ground logistics with organizers and sourced affordable and high-quality merchandise for in-person hackathons in San Francisco (approx.\ 150 attendees), Vermont, and New York
+    \item Built a mailing address database using USPS Intelligent Mail Barcode, enabling no-cost trackable postage
+    \item Integrated Shippo API into a Slack shipping agent to automate postage label purchase and generation
+    \item Reduced domestic shipping costs by up to 60\% and international costs by up to 80\% %, including devising alternate routing through regional trade disruptions%
+    % \item Planned and managed on-the-ground logistics with organizers and sourced affordable and high-quality merchandise for in-person hackathons in San Francisco (approx.\ 150 attendees), Vermont, and New York
+\end{itemize}
+
+\section{Research Experience}
+%===================
+\subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
+\subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
+\begin{itemize}
+    \item Fine-tuned and validated a CNN-based deformable image registration (DIR) model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring, achieving validation DICE score over 0.75
+    \item Prototyped a multi-head attention DIR architecture, reaching parity with CNN and VoxelMorph baselines
+    \item Ran training and inference on HPC clusters and configured CUDA environments for training compatibility
+    \item Wrote MATLAB and Python code to preprocess and validate training datasets
+\end{itemize}
+\subsubsection{Summer Intern, Medical Physics \hfill July 2024 - August 2024}
+\begin{itemize}
+    \item Wrote C\#, Python preprocessing code for head/neck cancer segmentation training for treatment tracking
+    \item Leveraged HPC clusters and IBM LSF (bsub) for job scheduling
 \end{itemize}
 
 
@@ -161,16 +171,16 @@ right=.45in,
 %=================
 
 
-\subsection{Personal Site and Photography Portfolio {\normalfont $|$ Next.js, Tailwind CSS, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
+\subsection{Personal Photography Portfolio {\normalfont $|$ Next.js, Tailwind CSS, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
 \begin{itemize}
     \item Designed a performant Next.js photography site with Cloudinary CDN delivery and EXIF-based filtering, cutting image load times and simplifying browsing across collections
     \item Built a secure authenticated admin dashboard (NextAuth, Bcrypt) backed by Supabase PostgreSQL, enabling non-technical content updates without redeploying the site
 \end{itemize}
 
-\subsection{Component Inventory Manager {\normalfont $|$ Next.js, PostgreSQL (Supabase), NextAuth} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
+\subsection{Component Inventory Manager {\normalfont $|$ PostgreSQL (Supabase), NextAuth} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
 \begin{itemize}
     \item Implemented a full-stack Next.js/Supabase system to manage electronic components, MPNs, and distributor data, with a barcode-scanner-compatible search tool for fast lookups
-    \item Generated thermal-printable asset ID labels to tag and organize components, streamlining inventory retrieval
+    \item Generated thermal-printable asset labels to tag and organize components, streamlining inventory retrieval
 \end{itemize}
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 AUG 2026 14:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  18 SEP 2026 00:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -817,15 +817,15 @@ LaTeX Font Info:    ... okay on input line 79.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(32.52127pt, 549.25246pt, 32.52127pt)
-* v-part:(T,H,B)=(25.29494pt, 744.38011pt, 25.29494pt)
+* h-part:(L,W,R)=(50.58878pt, 513.11745pt, 50.58878pt)
+* v-part:(T,H,B)=(46.97505pt, 701.01988pt, 46.97505pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=549.25246pt
-* \textheight=744.38011pt
-* \oddsidemargin=-39.74872pt
-* \evensidemargin=-39.74872pt
-* \topmargin=-83.97505pt
+* \textwidth=513.11745pt
+* \textheight=701.01988pt
+* \oddsidemargin=-21.68121pt
+* \evensidemargin=-21.68121pt
+* \topmargin=-62.29494pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -876,9 +876,9 @@ LaTeX Font Info:    Font shape `T1/Inter-TLF/black/n' aliased to
 (Font)              `T1/Inter-TLF/ub/n' on input line 95.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/ub/n' will be
 (Font)              scaled to size 12.0pt on input line 95.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/semibold/n' aliased to
-(Font)              `T1/Inter-TLF/sb/n' on input line 97.
-LaTeX Font Info:    Font shape `T1/Inter-TLF/sb/n' will be
+LaTeX Font Info:    Font shape `T1/Inter-TLF/bold/n' aliased to
+(Font)              `T1/Inter-TLF/b/n' on input line 97.
+LaTeX Font Info:    Font shape `T1/Inter-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 97.
 LaTeX Font Info:    Trying to load font information for TS1+Inter-TLF on input line 99.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/inter/TS1Inter-TLF.fd
@@ -898,13 +898,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 116--117
 LaTeX Font Info:    Font shape `T1/Inter-TLF/medium/n' will be
 (Font)              scaled to size 12.0pt on input line 132.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 164.
+(Font)              <12> on input line 174.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 164.
+(Font)              <8> on input line 174.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 164.
+(Font)              <6> on input line 174.
 LaTeX Font Info:    Font shape `T1/Inter-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 164.
+(Font)              scaled to size 12.0pt on input line 174.
 
 
 [1
@@ -916,18 +916,18 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 16476 strings out of 473190
- 285936 string characters out of 5715801
+ 16477 strings out of 473190
+ 285933 string characters out of 5715801
  671070 words of memory out of 5000000
  39514 multiletter control sequences out of 15000+600000
- 650281 words of font info for 69 fonts, out of 8000000 for 9000
+ 650286 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,508b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Resume.pdf (1 page, 336198 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Black.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Resume.pdf (1 page, 250545 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 20 named destinations out of 1000 (max. 500000)
+ 82 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
+ 22 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

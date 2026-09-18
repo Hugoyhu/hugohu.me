@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1787597703.37518 "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" "Resume.pdf" "Resume" 1787597704.06748 0
-  "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" 1787597703.19584 7623 1930a2647c5080244e9ad4e4a599cbdf ""
+["pdflatex"] 1789704508.23099 "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" "Resume.pdf" "Resume" 1789704508.92527 0
+  "/Users/hugohu/Documents/hugohu.me/public/media/Resume.tex" 1789704507.33572 8112 44de350024d8fb010b6c8fa78cffc857 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_6zlbe6.enc" 1700945067 3299 f5182ff935cc92b11f832b34c12bfd24 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/inter/a_djwlf6.enc" 1700945067 3045 797ebab4745a4e27ff5f94a7d22b3a54 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -26,8 +26,6 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-t1.tfm" 1700945067 29228 b78f43a6d21a66a813336a2d0952641d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-ts1--base.tfm" 1700945067 1408 cadd01f42d4636d8355c0772d0f5ce84 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Regular-tlf-ts1.tfm" 1700945067 1416 d2934e9a6a47f6cd0a85e9dd71a2d2db ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-SemiBold-tlf-t1--base.tfm" 1700945067 1688 47906d1ce40979bf567c8c8ee8cc7827 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-SemiBold-tlf-t1.tfm" 1700945067 32616 3b3d431111c1116e6363b2a91121f0c5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Thin-tlf-t1--base.tfm" 1700945067 1644 c0b764ee58d1dd6c648610e8faa14fff ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/inter/Inter-Thin-tlf-t1.tfm" 1700945067 27952 0e2482c2459c1258427c70f651ee6076 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -36,7 +34,6 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Italic.pfb" 1700945067 546303 e53becbe06b6eaaf4ca8cba212bb4f34 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Medium.pfb" 1700945067 647269 5edbaabdc5285aa94d6e2839b83de0b1 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb" 1700945067 599192 019aa611d981c84a03ce768035d78868 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-SemiBold.pfb" 1700945067 666277 413a5a11654134b9b83d4fc1b2818364 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/inter/Inter-Thin.pfb" 1700945067 513848 d0770c324df7509120774cdae35a69fb ""
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Black-tlf-t1.vf" 1700945067 1688 2b19e608ea42cd90494525a7bd67d32a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Bold-tlf-t1.vf" 1700945067 1688 bdbcaac8ac262411b1985b90bb015924 ""
@@ -44,7 +41,6 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Medium-tlf-t1.vf" 1700945067 1692 c50326f5c78151c2e8f9a8e59ea22b54 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Regular-tlf-t1.vf" 1700945067 1692 551baf03c06301f3cc0efcfe2de42785 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Regular-tlf-ts1.vf" 1700945067 544 b5f420ffaa3c178805b9a04f03004120 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-SemiBold-tlf-t1.vf" 1700945067 1692 2463d7c9aaa30ef1554c0c94938f24e7 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/inter/Inter-Thin-tlf-t1.vf" 1700945067 1688 148dd2c7dfdb10b7a1e33efcb1187f13 ""
   "/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -125,8 +121,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1762906687 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Resume.aux" 1787597703.89173 2724 5dcc10500e6abdb392e5a46ada289de9 "pdflatex"
-  "Resume.tex" 1787597703.19584 7623 1930a2647c5080244e9ad4e4a599cbdf ""
+  "Resume.aux" 1789704508.75898 3004 c8ae26bd5afde7fcf9691c647c09b33b "pdflatex"
+  "Resume.tex" 1789704507.33572 8112 44de350024d8fb010b6c8fa78cffc857 ""
   (generated)
   "Resume.aux"
   "Resume.log"
