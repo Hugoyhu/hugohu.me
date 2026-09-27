@@ -36,6 +36,11 @@ export default async function InventoryPage() {
             Electronic Component Parts Inventory
           </p>
         </div>
+        {!errorMessage && (
+          <Button asChild variant="outline">
+            <Link href="/inventory/import">Import invoice</Link>
+          </Button>
+        )}
       </header>
 
       {errorMessage ? (

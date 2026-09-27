@@ -7,7 +7,13 @@ export default function AdminPage() {
         Authenticated.
       </p>
 
-      <Link href="/admin/upload">Image Upload Page</Link>
+      <Link className="block" href="/admin/upload">
+        Image Upload Page
+      </Link>
+
+      <Link className="block" href="/inventory">
+        Component Inventory
+      </Link>
     </section>
   );
 }
