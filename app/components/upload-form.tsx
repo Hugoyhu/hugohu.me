@@ -8,11 +8,14 @@ type UploadResult = {
   public_id: string;
 };
 
-export default function UploadForm() {
-  const cloudNameEnv = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "";
-  const uploadPresetEnv =
-    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "";
+type UploadSignature = {
+  signature: string;
+  timestamp: number;
+  cloudName: string;
+  apiKey: string;
+};
 
+export default function UploadForm() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -37,19 +40,24 @@ export default function UploadForm() {
 
     setLoading(true);
     try {
-      if (!cloudNameEnv || !uploadPresetEnv) {
-        throw new Error(
-          "Missing Cloudinary env: NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME or NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET"
-        );
+      // signed upload
+      const signRes = await fetch("/api/cloudinary/sign", { method: "POST" });
+      if (!signRes.ok) {
+        const text = await signRes.text();
+        throw new Error(text || `Could not sign upload (${signRes.status})`);
       }
+      const { signature, timestamp, cloudName, apiKey } =
+        (await signRes.json()) as UploadSignature;
 
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", uploadPresetEnv);
+      formData.append("api_key", apiKey);
+      formData.append("timestamp", String(timestamp));
+      formData.append("signature", signature);
 
       const uploadRes = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudNameEnv}/auto/upload`,
-        { method: "POST", body: formData }
+        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+        { method: "POST", body: formData },
       );
 
       if (!uploadRes.ok) {
@@ -70,13 +78,13 @@ export default function UploadForm() {
       const time = exifData?.DateTimeOriginal
         ? new Date(exifData.DateTimeOriginal).toISOString()
         : exifData?.CreateDate
-        ? new Date(exifData.CreateDate).toISOString()
-        : null;
+          ? new Date(exifData.CreateDate).toISOString()
+          : null;
       const exposure = exifData?.ExposureTime
         ? `${exifData.ExposureTime}s`
         : exifData?.ShutterSpeedValue
-        ? `${exifData.ShutterSpeedValue}`
-        : null;
+          ? `${exifData.ShutterSpeedValue}`
+          : null;
       const aperture = exifData?.FNumber ? `${exifData.FNumber}` : null;
       const focal_length = exifData?.FocalLength
         ? `${exifData.FocalLength}`
@@ -88,8 +96,8 @@ export default function UploadForm() {
         (Array.isArray(exifData?.LensSpecification)
           ? exifData.LensSpecification.join(" ")
           : exifData?.LensSpecification
-          ? String(exifData.LensSpecification)
-          : null);
+            ? String(exifData.LensSpecification)
+            : null);
 
       const saveRes = await fetch("/api/images", {
         method: "POST",

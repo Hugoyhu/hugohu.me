@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "app/api/auth/[...nextauth]/route";
 import { createClient } from "@supabase/supabase-js";
 
 export async function POST(req: Request) {
+  const session = await getServerSession(authOptions as any);
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const body = await req.json();
     const url = process.env.SUPABASE_URL;
