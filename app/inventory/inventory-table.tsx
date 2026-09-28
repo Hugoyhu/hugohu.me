@@ -35,6 +35,13 @@ type Drafts = Record<string, Partial<Record<Field, string>>>;
 
 const original = (item: Component, field: Field) => String(item[field] ?? "");
 
+// Lowercased, with "µ" and "μ" written as "u" so "0.1µF" matches "0.1uF".
+const searchText = (value: string) =>
+  value.toLowerCase().replace(/[µμ]/g, "u");
+
+// Lets "sot23" match "SOT-23" and "0603 x7r" match "0603_X7R".
+const stripSeparators = (value: string) => value.replace(/[\s\-_/,]+/g, "");
+
 const cellInput =
   "h-7 w-full rounded-md border border-input bg-transparent px-2 text-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring";
 const changedCell = "bg-amber-100 dark:bg-amber-900/40";
@@ -56,22 +63,42 @@ export function InventoryTable({ items, saveRef }: InventoryTableProps) {
 
   const dirtyIds = Object.keys(drafts);
 
+  const searchIndex = React.useMemo(
+    () =>
+      new Map(
+        items.map((item) => {
+          const text = searchText(
+            [
+              item.name,
+              item.category,
+              item.subcategory,
+              item.manufacturer,
+              item.mpn,
+              item.package,
+              item.spec,
+              item.distributor,
+              item.dpn,
+              item.datasheet,
+            ].join(" "),
+          );
+          return [item.id, { text, compact: stripSeparators(text) }];
+        }),
+      ),
+    [items],
+  );
+
   const filteredItems = React.useMemo(() => {
-    const q = search.trim().toLowerCase();
-    if (!q) return items;
-    return items.filter((item) =>
-      [
-        item.name,
-        item.category,
-        item.subcategory,
-        item.manufacturer,
-        item.mpn,
-        item.distributor,
-        item.dpn,
-        item.datasheet,
-      ].some((value) => value?.toString().toLowerCase().includes(q)),
-    );
-  }, [items, search]);
+    const terms = searchText(search).split(/\s+/).filter(Boolean);
+    if (terms.length === 0) return items;
+    return items.filter((item) => {
+      const entry = searchIndex.get(item.id);
+      if (!entry) return false;
+      const { text, compact } = entry;
+      return terms.every(
+        (term) => text.includes(term) || compact.includes(stripSeparators(term)),
+      );
+    });
+  }, [items, search, searchIndex]);
 
   const value = (item: Component, field: Field) =>
     drafts[item.id]?.[field] ?? original(item, field);

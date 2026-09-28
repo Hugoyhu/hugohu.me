@@ -16,11 +16,11 @@ export const projects: ProjectEntry[] = [
     year: 2026,
     description: (
       <>
-        Built into the hugohu.me website, this asset and inventory tracker uses
-        shared SQL query APIs and a common UI, and keeps a record of all
-        electronic components in your workshop. It has a secured login portal
-        and offers typed or barcode search, part entry, part modifications, and
-        the ability to generate PDF asset labels for use with thermal printers.
+        This electronic component asset and inventory tracker features a
+        built-in login portal, on-demand thermal-printable asset labels,
+        flexible search with barcode, keyword, and LLM-powered natural language
+        search, as well as an LLM invoice import pipeline utility and an agentic
+        chatbot assistant, all with human review safeguards for any AI tooling.
       </>
     ),
   },
