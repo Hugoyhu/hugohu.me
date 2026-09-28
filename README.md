@@ -37,7 +37,7 @@ A tracker for hardware electronic components (`/inventory`, sign-in required). E
 
 - **Browse and search** every part by name, category, MPN, distributor part number, or datasheet link. Clicking a part's name opens a pop-up with all of its details, its datasheet, and a label download.
 - **Edit in place** turns every cell into an editable field.
-- **Add parts:** if the MPN is already in stock (ignoring case and spaces), you're asked whether to **add the quantity to it** or **overwrite** its details. Nothing is overwritten silently.
+- **Add parts:** if the MPN is already in stock (ignoring case and spaces), choices given to overwrite or increment existing supply.
 - **Print bin labels:** each part can be downloaded as a small PDF label with a QR code (`@react-pdf/renderer` + `qrcode-generator`). A label is generated automatically after adding a part.
 - **Datasheet links** for each part, in their own column.
 - **Ask your inventory with AI:** a chat for searching in plain English and printing labels in batches. See below.
