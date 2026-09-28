@@ -58,7 +58,7 @@ export function ToggleFormButton() {
       onClick={() => setShowForm(!showForm)}
       aria-pressed={showForm}
     >
-      {showForm ? "Hide editor" : "Add / edit part"}
+      {showForm ? "Hide add form" : "Add part"}
     </Button>
   );
 }

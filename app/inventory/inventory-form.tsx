@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
 import { pdf } from "@react-pdf/renderer";
 
 import { upsertComponent } from "./actions";
@@ -16,18 +15,21 @@ import {
   type ComponentCategory,
   type Component,
 } from "types/inventory";
-import { PrintButton } from "./print-button";
 import { LabelDocument } from "./LabelDocument";
 import { useFormVisibility } from "./form-visibility";
-import { PartDialog } from "./part-dialog";
+import { InventoryTable } from "./inventory-table";
+import {
+  ExistingPartDialog,
+  type ExistingChoice,
+} from "./existing-part-dialog";
+import { normalizeMpn } from "lib/inventory-normalize";
 
 type InventoryFormProps = {
   items: Component[];
 };
 
 export function InventoryForm({ items }: InventoryFormProps) {
-  const router = useRouter();
-  const { showForm, setShowForm } = useFormVisibility();
+  const { showForm } = useFormVisibility();
   const showFormRef = React.useRef(showForm);
   showFormRef.current = showForm;
   const [category, setCategory] = React.useState<
@@ -38,31 +40,8 @@ export function InventoryForm({ items }: InventoryFormProps) {
     null,
   );
   const [formKey, setFormKey] = React.useState(0);
-  const [search, setSearch] = React.useState("");
 
   const subcategoryOptions = category ? (CATEGORY_OPTIONS[category] ?? []) : [];
-
-  const filteredItems = React.useMemo(() => {
-    const q = search.trim().toLowerCase();
-    if (!q) return items;
-
-    return items.filter((item) => {
-      const values: Array<string | number | null | undefined> = [
-        item.name,
-        item.category,
-        item.subcategory,
-        item.manufacturer,
-        item.mpn,
-        item.distributor,
-        item.dpn,
-        item.datasheet,
-      ];
-
-      return values.some((value) =>
-        value?.toString().toLowerCase().includes(q),
-      );
-    });
-  }, [items, search]);
 
   const handleAutoPrintLabel = React.useCallback(async (item: Component) => {
     try {
@@ -129,14 +108,21 @@ export function InventoryForm({ items }: InventoryFormProps) {
     }
   }, [items, handleAutoPrintLabel]);
 
-  // Cmd+S / Ctrl+S saves the component instead of the browser's "Save Page"
+  // Cmd+S / Ctrl+S saves instead of the browser's "Save Page": the table's
+  // edits while it's in edit mode, otherwise the add form.
   const formRef = React.useRef<HTMLFormElement>(null);
+  const tableSaveRef = React.useRef<(() => void) | null>(null);
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "s")
         return;
       event.preventDefault();
-      if (event.repeat || !showFormRef.current) return;
+      if (event.repeat) return;
+      if (tableSaveRef.current) {
+        tableSaveRef.current();
+        return;
+      }
+      if (!showFormRef.current) return;
       // requestSubmit runs validation and onSubmit, same as clicking Save
       formRef.current?.requestSubmit();
     };
@@ -163,9 +149,46 @@ export function InventoryForm({ items }: InventoryFormProps) {
     event.preventDefault();
   };
 
+  // Saving an MPN that's already in stock asks first: add to its stock or
+  // overwrite it. The choice travels to the server in a hidden field.
+  const [existingPrompt, setExistingPrompt] = React.useState<{
+    part: Component;
+    quantity: number;
+  } | null>(null);
+  const existingModeRef = React.useRef<HTMLInputElement>(null);
+  const choiceMadeRef = React.useRef(false);
+
+  const handleExistingChoice = (choice: ExistingChoice) => {
+    if (existingModeRef.current) existingModeRef.current.value = choice;
+    choiceMadeRef.current = true;
+    setExistingPrompt(null);
+    formRef.current?.requestSubmit();
+  };
+
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     const mpnInput = form.elements.namedItem("mpn") as HTMLInputElement | null;
+
+    if (choiceMadeRef.current) {
+      choiceMadeRef.current = false; // this submit carries the user's choice
+    } else {
+      if (existingModeRef.current) existingModeRef.current.value = "";
+      const mpn = mpnInput?.value.trim() ?? "";
+      const existing = mpn
+        ? items.find((it) => normalizeMpn(it.mpn ?? "") === normalizeMpn(mpn))
+        : undefined;
+      if (existing) {
+        event.preventDefault();
+        const qtyInput = form.elements.namedItem(
+          "quantity",
+        ) as HTMLInputElement | null;
+        setExistingPrompt({
+          part: existing,
+          quantity: Math.max(0, parseInt(qtyInput?.value ?? "0") || 0),
+        });
+        return;
+      }
+    }
 
     if (typeof window !== "undefined" && mpnInput?.value) {
       window.localStorage.setItem("inventory:lastMpnForLabel", mpnInput.value);
@@ -185,6 +208,7 @@ export function InventoryForm({ items }: InventoryFormProps) {
         onSubmit={handleFormSubmit}
         onKeyDown={handleFormKeyDown}
       >
+        <input type="hidden" name="existingMode" ref={existingModeRef} />
         <div className="space-y-1.5 sm:col-span-2">
           <Label htmlFor="name">Name</Label>
           <Input
@@ -355,162 +379,18 @@ export function InventoryForm({ items }: InventoryFormProps) {
         <div className="sm:col-span-2 flex items-center justify-between gap-2">
           <Button type="submit">Save component</Button>
           <p className="text-[11px] text-muted-foreground">
-            New or existing parts are upserted based on MPN.
+            If the MPN is already stocked, you'll be asked whether to add to it
+            or overwrite it.
           </p>
         </div>
       </form>
-      <section className="space-y-3 rounded-lg border bg-background p-4">
-        <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 className="text-sm font-medium">Inventory</h2>
-            <p className="text-xs text-muted-foreground">
-              Scroll or search to browse all parts in the database.
-            </p>
-          </div>
-          <div className="flex flex-col gap-1 sm:items-end">
-            <Input
-              type="search"
-              placeholder="Search by name, category, MPN, DPN…"
-              className="h-8 w-full"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-            />
-            <span className="text-[11px] text-muted-foreground">
-              Showing {filteredItems.length} of {items.length} part
-              {items.length === 1 ? "" : "s"}
-            </span>
-          </div>
-        </header>
-
-        {filteredItems.length === 0 ? (
-          <p className="text-xs text-muted-foreground">
-            {items.length === 0
-              ? "No parts found yet. Use the form to add your first component."
-              : "No parts match your search."}
-          </p>
-        ) : (
-          <div className="max-h-[480px] overflow-y-auto rounded-md border bg-card text-xs sm:text-sm">
-            <table className="w-full border-collapse">
-              <thead className="sticky top-0 z-10 bg-muted/70 backdrop-blur">
-                <tr className="border-b">
-                  <th className="px-3 py-2 text-left font-medium">Name</th>
-                  <th className="px-3 py-2 text-left font-medium">Category</th>
-                  <th className="px-3 py-2 text-left font-medium">
-                    Subcategory
-                  </th>
-                  <th className="px-3 py-2 text-left font-medium">
-                    Manufacturer
-                  </th>
-                  <th className="px-3 py-2 text-left font-medium">Part #</th>
-                  <th className="px-3 py-2 text-right font-medium">Package</th>
-                  <th className="px-3 py-2 text-right font-medium">Qty</th>
-
-                  <th className="px-3 py-2 text-right font-medium">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredItems.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="border-b last:border-b-0 hover:bg-muted/60"
-                  >
-                    <td className="max-w-[10rem] px-3 py-1.5 align-middle">
-                      <PartDialog part={item}>
-                        <button
-                          type="button"
-                          className="block max-w-full truncate text-left font-medium hover:underline"
-                        >
-                          {item.name || item.mpn}
-                        </button>
-                      </PartDialog>
-                      {item.datasheet && (
-                        <a
-                          href={item.datasheet}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[11px] text-muted-foreground underline underline-offset-2"
-                        >
-                          datasheet
-                        </a>
-                      )}
-                    </td>
-                    <td className="max-w-[8rem] px-3 py-1.5 align-middle text-muted-foreground">
-                      <span className="block truncate">{item.category}</span>
-                    </td>
-                    <td className="max-w-[8rem] px-3 py-1.5 align-middle text-muted-foreground">
-                      <span className="block truncate">
-                        {item.subcategory || "-"}
-                      </span>
-                    </td>
-                    <td className="max-w-[10rem] px-3 py-1.5 align-middle text-muted-foreground">
-                      <span className="block truncate">
-                        {item.manufacturer || "-"}
-                      </span>
-                    </td>
-                    <td className="max-w-[10rem] px-3 py-1.5 align-middle text-muted-foreground">
-                      <span className="block truncate font-mono text-[11px] sm:text-xs">
-                        {item.mpn || "-"}
-                      </span>
-                    </td>
-                    <td className="max-w-[10rem] px-3 py-1.5 align-middle text-muted-foreground">
-                      <span className="block truncate font-mono text-[11px] sm:text-xs">
-                        {item.package || "-"}
-                      </span>
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-1.5 text-right align-middle font-mono">
-                      {item.quantity}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-1.5 text-right align-middle">
-                      <div className="flex items-center justify-end gap-3">
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          className="h-7 w-7 text-[11px]"
-                          onClick={() => {
-                            setSelectedItem(item);
-                            setCategory(item.category as ComponentCategory);
-                            setSubcategory(item.subcategory || undefined);
-                            setFormKey((key) => key + 1);
-                            setShowForm(true);
-                          }}
-                        >
-                          Edit
-                        </Button>
-
-                        <PrintButton item={item} />
-
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          className="h-7 w-7 text-[11px] text-destructive"
-                          onClick={async () => {
-                            const confirmed = window.confirm(
-                              "Delete this part from inventory?",
-                            );
-                            if (!confirmed) return;
-
-                            await fetch("/api/inventory/delete", {
-                              method: "POST",
-                              headers: { "Content-Type": "application/json" },
-                              body: JSON.stringify({ id: item.id }),
-                            });
-
-                            router.refresh();
-                          }}
-                        >
-                          Delete
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+      <InventoryTable items={items} saveRef={tableSaveRef} />
+      <ExistingPartDialog
+        part={existingPrompt?.part ?? null}
+        quantity={existingPrompt?.quantity ?? 0}
+        onChoose={handleExistingChoice}
+        onCancel={() => setExistingPrompt(null)}
+      />
     </div>
   );
 }

@@ -171,7 +171,9 @@ input[type='email'] {
   appearance: none;
 }
 
-table {
+/* Scroll wide tables in blog posts. Scoped to .prose so app tables
+   (inventory, import review) keep normal table layout. */
+.prose table {
   display: block;
   max-width: fit-content;
   overflow-x: auto;

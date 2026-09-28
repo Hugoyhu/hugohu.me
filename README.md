@@ -2,7 +2,7 @@
 
 Hugo Hu's personal website, with a built-in photography portfolio and an electronic component inventory manager. Other small tools may be added in the future!
 
-**Stack:** Next.js (App Router) · Tailwind CSS · Supabase (PostgreSQL) · Cloudinary · NextAuth · Claude API (Haiku 4.5) · hosted on Vercel
+**Stack:** Next.js (App Router) · Tailwind CSS · Supabase (PostgreSQL) · Cloudinary · NextAuth · Claude API (Haiku 4.5, Sonnet 5) · hosted on Vercel
 
 - [Personal Site](#personal-site)
 - [Photography Portfolio](#photography-portfolio-v3)
@@ -33,14 +33,17 @@ My photography portfolio (version three) at `/photos`. The images live on Cloudi
 
 ## Inventory Manager
 
-A tracker for the electronic components on my workbench (`/inventory`, sign-in required). Each part stores its manufacturer and distributor part numbers, category, package, quantity, RoHS status, MSL, and optional spec notes.
+A tracker for hardware electronic components (`/inventory`, sign-in required). Each part stores its manufacturer and distributor part numbers, category, package, quantity, RoHS status, MSL, and optional spec notes.
 
-- **Browse and search** every part by name, category, MPN, or distributor part number.
-- **Add and edit** parts by hand. Saving upserts by MPN, so re-entering a part updates it instead of duplicating it.
-- **Print bin labels:** each part can be downloaded as a small PDF label with a QR code (`@react-pdf/renderer` + `qrcode-generator`). A label is generated automatically after saving a part.
+- **Browse and search** every part by name, category, MPN, distributor part number, or datasheet link. Clicking a part's name opens a pop-up with all of its details, its datasheet, and a label download.
+- **Edit in place** turns every cell into an editable field.
+- **Add parts:** if the MPN is already in stock (ignoring case and spaces), you're asked whether to **add the quantity to it** or **overwrite** its details. Nothing is overwritten silently.
+- **Print bin labels:** each part can be downloaded as a small PDF label with a QR code (`@react-pdf/renderer` + `qrcode-generator`). A label is generated automatically after adding a part.
+- **Datasheet links** for each part, in their own column.
+- **Ask your inventory with AI:** a chat for searching in plain English and printing labels in batches. See below.
 - **Import an invoice with AI:** upload a distributor invoice or packing slip PDF (Digi-Key, Mouser, LCSC, …) and the new stock is added for you. See below.
 
-Categories and subcategories loosely follow Digi-Key's product categories and are defined in one place, `types/categories.ts`. The dropdowns, validation, and the AI prompt are all generated from it. Category names are stored on each part as plain text, so add freely, but only rename an entry alongside a data migration.
+Categories and subcategories loosely follow Digi-Key's product categories and are defined in one place, `types/categories.ts`. The dropdowns, validation, and the AI prompt are all generated from it.
 
 ### AI invoice import
 
@@ -51,7 +54,23 @@ Categories and subcategories loosely follow Digi-Key's product categories and ar
 3. **Review:** existing components can be updated (new inventory added to count), or inputted as new. Each line part can be unticked with information manually modified before saving.
 4. **Apply:** the server re-validates each line, merges duplicate MPNs, then adds the received quantities to existing parts and inserts new ones.
 
+Extracted values are cleaned up in code (`lib/inventory-normalize.ts`):
+
 API calls to Claude are minimal with the Haiku 4.5 model, and cost approximately $0.01 per upload.
+
+### Ask your inventory (AI assistant)
+
+A chat panel at the top of `/inventory` acts as a small tool-using agent: Claude is passed the entire inventory and can decide which tools to call.
+
+- **Natural-language search:** asking Claude for a specific function in a component, like if any microcontrollers in inventory have built-in USB. Defaults to Haiku 4.5 for lower token costs, but can escalate to Sonnet 5 as needed.
+- **Batch labels:** Claude can be asked to generate batch PDFs for multiple components matching requested features.
+- **Follow-ups:** prior 10 messages are sent as context so memory is retained from previous conversations.
+
+Transparency:
+
+- **Read-only tools:** `show_parts` and `make_labels` cannot make changes to the inventory.
+- **No invented parts:** every MPN the model passes to a tool is first checked against the real inventory.
+- **Sources are labelled:** facts that aren't in the inventory data are marked as general knowledge from the model.
 
 ## Setup
 
@@ -74,7 +93,7 @@ The portfolio also requires a CDN. I use Cloudinary for my image hosting. Their 
 
 The site has authentication built in, using NextAuth and bcrypt. It only allows one user.
 
-The inventory's invoice import uses the Claude API, which needs an Anthropic API key. A Claude API key (usage costs apply) is _not_ required for features that do not use AI.
+The inventory's invoice import and AI assistant use the Claude API, which needs an Anthropic API key. A Claude API key (usage costs apply) is _not_ required for features that do not use AI.
 
 ### Environment variables
 
@@ -93,7 +112,7 @@ Create a `.env.local` file in the project root with the following:
 | `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
 | `CLOUDINARY_API_KEY` | Cloudinary API key |
 | `CLOUDINARY_API_SECRET` | Cloudinary API secret |
-| `ANTHROPIC_API_KEY` | Claude API key for invoice import |
+| `ANTHROPIC_API_KEY` | Claude API key for invoice import and the inventory assistant |
 
 Anything prefixed `NEXT_PUBLIC_` is visible in the browser.
 
@@ -149,7 +168,7 @@ Create a Supabase project with two tables, one for the photography portfolio and
 | created_at | timestamptz | default `now()` |
 | name | text | |
 | manufacturer | text | |
-| mpn | text | **unique**; parts are matched and upserted by MPN |
+| mpn | text | **unique**; parts are matched by MPN |
 | distributor | text | |
 | dpn | text | distributor part number |
 | category | text | a key from `types/categories.ts` |

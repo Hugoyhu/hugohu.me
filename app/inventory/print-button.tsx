@@ -2,12 +2,19 @@
 
 import * as React from "react";
 import { pdf } from "@react-pdf/renderer";
+import { Printer } from "lucide-react";
 
 import type { Component } from "types/inventory";
 import { Button } from "@/app/components/ui/button";
 import { LabelDocument } from "./LabelDocument";
 
-export function PrintButton({ item }: { item: Component }) {
+export function PrintButton({
+  item,
+  iconOnly = false,
+}: {
+  item: Component;
+  iconOnly?: boolean;
+}) {
   const [isPrinting, setIsPrinting] = React.useState(false);
 
   const handlePrint = async () => {
@@ -27,6 +34,23 @@ export function PrintButton({ item }: { item: Component }) {
       setIsPrinting(false);
     }
   };
+
+  if (iconOnly) {
+    return (
+      <Button
+        type="button"
+        size="icon"
+        variant="ghost"
+        className="h-7 w-7"
+        onClick={handlePrint}
+        disabled={isPrinting}
+        title="Print label"
+        aria-label={`Print label for ${item.mpn || item.name}`}
+      >
+        <Printer />
+      </Button>
+    );
+  }
 
   return (
     <Button
