@@ -5,6 +5,8 @@ import type { Component } from "types/inventory";
 
 import { Button } from "@/app/components/ui/button";
 import { InventoryForm } from "./inventory-form";
+import { InventoryChat } from "./inventory-chat";
+import { FormVisibilityProvider, ToggleFormButton } from "./form-visibility";
 
 export const dynamic = "force-dynamic";
 
@@ -27,41 +29,49 @@ export default async function InventoryPage() {
 
   return (
     <main className="mx-auto flex w-full max-w-8xl flex-col gap-8 p-4 sm:p-8">
-      <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Inventory
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Electronic Component Parts Inventory
-          </p>
-        </div>
-        {!errorMessage && (
-          <Button asChild variant="outline">
-            <Link href="/inventory/import">Import invoice</Link>
-          </Button>
-        )}
-      </header>
-
-      {errorMessage ? (
-        <section className="rounded-lg border bg-background p-6">
-          <h2 className="text-base font-medium">Inventory unavailable</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {isAuthError
-              ? "You must be signed in to view inventory."
-              : errorMessage}
-          </p>
-          {isAuthError && (
-            <div className="mt-4">
-              <Button asChild>
-                <Link href="/auth/signin">Go to sign-in</Link>
+      <FormVisibilityProvider>
+        <header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+              Inventory
+            </h1>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Electronic Component Parts Inventory
+            </p>
+          </div>
+          {!errorMessage && (
+            <div className="flex gap-2">
+              <ToggleFormButton />
+              <Button asChild variant="outline">
+                <Link href="/inventory/import">Import invoice</Link>
               </Button>
             </div>
           )}
-        </section>
-      ) : (
-        <InventoryFormAny items={items} />
-      )}
+        </header>
+
+        {errorMessage ? (
+          <section className="rounded-lg border bg-background p-6">
+            <h2 className="text-base font-medium">Inventory unavailable</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {isAuthError
+                ? "You must be signed in to view inventory."
+                : errorMessage}
+            </p>
+            {isAuthError && (
+              <div className="mt-4">
+                <Button asChild>
+                  <Link href="/auth/signin">Go to sign-in</Link>
+                </Button>
+              </div>
+            )}
+          </section>
+        ) : (
+          <>
+            <InventoryChat />
+            <InventoryFormAny items={items} />
+          </>
+        )}
+      </FormVisibilityProvider>
     </main>
   );
 }

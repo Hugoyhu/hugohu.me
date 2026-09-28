@@ -9,7 +9,7 @@ export function ProjectsList({ entries }: { entries: ProjectEntry[] }) {
       {sorted.map((p) => (
         <article
           key={`${p.title}-${p.url}`}
-          className="project-card rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden"
+          className="project-card rounded-lg border border-neutral-400 dark:border-neutral-600 overflow-hidden"
         >
           {p.imageUrl ? (
             <img

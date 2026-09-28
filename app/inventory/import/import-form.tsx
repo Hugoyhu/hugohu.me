@@ -56,7 +56,7 @@ export function ImportForm() {
     setError(null);
     const included = lines
       .filter((l) => l.include)
-      .map(({ include, existing, ...line }) => line);
+      .map(({ include, existing, printedMpn, ...line }) => line);
 
     startApply(async () => {
       const result = await applyReceipt({ distributor, lines: included });
@@ -198,6 +198,12 @@ function ReviewRow({
           placeholder="Missing MPN"
           className="h-8 font-mono text-xs"
         />
+        {line.printedMpn &&
+          line.printedMpn.toUpperCase() !== line.mpn.toUpperCase() && (
+            <p className="mt-1 font-mono text-[11px] text-muted-foreground">
+              printed: {line.printedMpn}
+            </p>
+          )}
         {line.manufacturer && (
           <p className="mt-1 text-[11px] text-muted-foreground">
             {line.manufacturer}

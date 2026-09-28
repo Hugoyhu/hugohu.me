@@ -11,6 +11,18 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!,
 );
 
+// Only keep well-formed http(s) links
+function toHttpUrl(raw: FormDataEntryValue | null) {
+  const value = typeof raw === "string" ? raw.trim() : "";
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
 // get
 export async function getInventory() {
   // Check if logged in via NextAuth
@@ -44,7 +56,9 @@ export async function upsertComponent(formData: FormData) {
 
   const rawData = {
     name: formData.get("name") as string,
-    manufacturer: formData.get("manufacturer") as string,
+    manufacturer: ((formData.get("manufacturer") as string) ?? "")
+      .trim()
+      .toUpperCase(),
     mpn: formData.get("mpn") as string,
     distributor: formData.get("distributor") as string,
     dpn: formData.get("dpn") as string,
@@ -53,6 +67,7 @@ export async function upsertComponent(formData: FormData) {
     quantity: parseInt(formData.get("quantity") as string),
     package: formData.get("package") as string,
     spec: spec || null,
+    datasheet: toHttpUrl(formData.get("datasheet")),
     rohs: (formData.get("rohs") as string) === "true",
     msl: parseInt((formData.get("msl") as string) || "0"),
   };

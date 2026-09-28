@@ -49,7 +49,7 @@ Categories and subcategories loosely follow Digi-Key's product categories and ar
 1. **Extract:** the PDF is sent to Claude with a structured outputs to ensure well-formed JSON responses. Unknown fields are filled as `null`.
 2. **Match:** each line is matched against existing parts by MPN (case- and whitespace-insensitive).
 3. **Review:** existing components can be updated (new inventory added to count), or inputted as new. Each line part can be unticked with information manually modified before saving.
-4. **Apply:** the server re-validates each line then calls `receive_parts` to increment existing quantities, insert new parts, and merge duplicate MPNs.
+4. **Apply:** the server re-validates each line, merges duplicate MPNs, then adds the received quantities to existing parts and inserts new ones.
 
 API calls to Claude are minimal with the Haiku 4.5 model, and cost approximately $0.01 per upload.
 
@@ -95,7 +95,7 @@ Create a `.env.local` file in the project root with the following:
 | `CLOUDINARY_API_SECRET` | Cloudinary API secret |
 | `ANTHROPIC_API_KEY` | Claude API key for invoice import |
 
-Anything prefixed `NEXT_PUBLIC_` is visible in the browser. Everything else stays on the server.
+Anything prefixed `NEXT_PUBLIC_` is visible in the browser.
 
 #### Password hash
 
@@ -159,6 +159,7 @@ Create a Supabase project with two tables, one for the photography portfolio and
 | spec | text | optional free-form notes |
 | rohs | boolean | |
 | msl | integer | moisture sensitivity level |
+| datasheet | text | optional URL of the part's datasheet |
 
 ### Deploying to Vercel
 

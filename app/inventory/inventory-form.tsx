@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { pdf } from "@react-pdf/renderer";
 
@@ -19,6 +18,8 @@ import {
 } from "types/inventory";
 import { PrintButton } from "./print-button";
 import { LabelDocument } from "./LabelDocument";
+import { useFormVisibility } from "./form-visibility";
+import { PartDialog } from "./part-dialog";
 
 type InventoryFormProps = {
   items: Component[];
@@ -26,6 +27,9 @@ type InventoryFormProps = {
 
 export function InventoryForm({ items }: InventoryFormProps) {
   const router = useRouter();
+  const { showForm, setShowForm } = useFormVisibility();
+  const showFormRef = React.useRef(showForm);
+  showFormRef.current = showForm;
   const [category, setCategory] = React.useState<
     ComponentCategory | undefined
   >();
@@ -51,6 +55,7 @@ export function InventoryForm({ items }: InventoryFormProps) {
         item.mpn,
         item.distributor,
         item.dpn,
+        item.datasheet,
       ];
 
       return values.some((value) =>
@@ -124,6 +129,21 @@ export function InventoryForm({ items }: InventoryFormProps) {
     }
   }, [items, handleAutoPrintLabel]);
 
+  // Cmd+S / Ctrl+S saves the component instead of the browser's "Save Page"
+  const formRef = React.useRef<HTMLFormElement>(null);
+  React.useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "s")
+        return;
+      event.preventDefault();
+      if (event.repeat || !showFormRef.current) return;
+      // requestSubmit runs validation and onSubmit, same as clicking Save
+      formRef.current?.requestSubmit();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   const handleFormKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
     if (event.key !== "Enter") return;
 
@@ -153,11 +173,15 @@ export function InventoryForm({ items }: InventoryFormProps) {
   };
 
   return (
-    <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+    <div
+      className={`mt-4 grid gap-6 ${showForm ? "lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]" : ""}`}
+    >
+      {/* Hidden rather than unmounted, so a half-filled form survives */}
       <form
+        ref={formRef}
         key={formKey}
         action={upsertComponent}
-        className="grid gap-4 sm:grid-cols-2"
+        className={showForm ? "grid gap-4 sm:grid-cols-2" : "hidden"}
         onSubmit={handleFormSubmit}
         onKeyDown={handleFormKeyDown}
       >
@@ -307,6 +331,17 @@ export function InventoryForm({ items }: InventoryFormProps) {
         </div>
 
         <div className="space-y-1.5 sm:col-span-2">
+          <Label htmlFor="datasheet">Datasheet URL (optional)</Label>
+          <Input
+            id="datasheet"
+            name="datasheet"
+            type="url"
+            placeholder="https://…/datasheet.pdf"
+            defaultValue={selectedItem?.datasheet ?? ""}
+          />
+        </div>
+
+        <div className="space-y-1.5 sm:col-span-2">
           <Label htmlFor="spec">Spec (optional)</Label>
           <Textarea
             id="spec"
@@ -380,12 +415,24 @@ export function InventoryForm({ items }: InventoryFormProps) {
                     className="border-b last:border-b-0 hover:bg-muted/60"
                   >
                     <td className="max-w-[10rem] px-3 py-1.5 align-middle">
-                      <Link
-                        href={`/inventory/${item.id}`}
-                        className="block truncate font-medium hover:underline"
-                      >
-                        {item.name || item.mpn}
-                      </Link>
+                      <PartDialog part={item}>
+                        <button
+                          type="button"
+                          className="block max-w-full truncate text-left font-medium hover:underline"
+                        >
+                          {item.name || item.mpn}
+                        </button>
+                      </PartDialog>
+                      {item.datasheet && (
+                        <a
+                          href={item.datasheet}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] text-muted-foreground underline underline-offset-2"
+                        >
+                          datasheet
+                        </a>
+                      )}
                     </td>
                     <td className="max-w-[8rem] px-3 py-1.5 align-middle text-muted-foreground">
                       <span className="block truncate">{item.category}</span>
@@ -425,6 +472,7 @@ export function InventoryForm({ items }: InventoryFormProps) {
                             setCategory(item.category as ComponentCategory);
                             setSubcategory(item.subcategory || undefined);
                             setFormKey((key) => key + 1);
+                            setShowForm(true);
                           }}
                         >
                           Edit

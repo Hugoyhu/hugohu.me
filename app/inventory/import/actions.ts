@@ -13,6 +13,12 @@ import {
   CATEGORY_OPTIONS,
   type ComponentCategory,
 } from "types/inventory";
+import {
+  normalizeManufacturer,
+  normalizeMpn,
+  normalizePackage,
+  stripPackagingSuffix,
+} from "lib/inventory-normalize";
 
 const MODEL = "claude-haiku-4-5";
 const MAX_PDF_BYTES = 10 * 1024 * 1024;
@@ -34,6 +40,7 @@ const InvoiceSchema = z.object({
   order_number: z.string().nullable(),
   lines: z.array(
     z.object({
+      mpn_as_printed: z.string().nullable(),
       mpn: z.string().nullable(),
       manufacturer: z.string().nullable(),
       dpn: z.string().nullable(),
@@ -53,11 +60,13 @@ const SUBCATEGORY_GUIDE = CATEGORY_KEYS.map(
 const SYSTEM_PROMPT = `Please extract line items from electronic component distributor invoices and packing slips (Digi-Key, Mouser, LCSC, etc.) so they can be added to a personal parts inventory.
 
 For each purchased component, please return:
-- mpn: the manufacturer part number exactly as printed, or null if absent.
-- manufacturer, dpn (distributor part number): as printed, or null.
+- mpn_as_printed: the manufacturer part number exactly as printed, or null if absent.
+- mpn: the same part number with any packaging-only suffix removed, so that tape-and-reel, cut-tape, and tube versions of one part share one MPN. Examples: "ATTINY85-20SSNR" → "ATTINY85-20SSN", "LM358DR" → "LM358D", "SN74HC595PWR" → "SN74HC595PW", "MCP1700T-3302E/TT" → "MCP1700-3302E/TT". Only remove characters you are confident denote packaging (reel, tape, tube, tray), never ones that change the part itself (package, temperature grade, tolerance, voltage). If unsure, return it exactly as printed. For passives (resistors, capacitors, inductors, ferrites, crystals), always return it exactly as printed: their packaging codes are embedded mid-number.
+- manufacturer: the short, commonly used brand name rather than the full legal name. Drop company suffixes and regional qualifiers (Inc, LLC, Ltd, Co., Corp, Corporation, GmbH, USA, America, Electronics, Industries, Technology, Semiconductor) when the brand is recognizable without them. Examples: "Adafruit Industries LLC" → "Adafruit", "Nexperia USA Inc." → "Nexperia", "Texas Instruments Incorporated" → "Texas Instruments", "Microchip Technology" → "Microchip", "STMicroelectronics" → "STMicroelectronics", "Würth Elektronik" → "Wurth Elektronik", "KYOCERA AVX" → "KYOCERA AVX". Null if absent.
+- dpn (distributor part number): as printed, or null.
 - description: the distributor's part description, e.g. "RES 10K OHM 1% 1/10W 0402", "CAP CER 0.1UF 10% 50V X7R 0805", "CAP ALUM 100UF 20% 35V RAD", for passives. Please keep them in that broad order for specs. For other components, including ICs, consider using the manufacturer part # as the description.
 - quantity: the quantity SHIPPED on this document. If shipped and ordered differ (backorders), use shipped; if a line shipped 0, still include it with quantity 0.
-- package: the footprint/package if you can tell from the description (e.g. "0402", "SOT-23-5", "QFN-32"), else null. Note that not all package names will come with dashes: so "SOD323F" or "24QFN" are also valid. Please try to align to standardized names like "QFN-24" rather than "24QFN". 
+- package: the footprint/package if you can tell from the description (e.g. "0402", "SOT-23-5", "QFN-32"), else null. Note that not all package names will come with dashes: so "SOD323F" or "24QFN" are also valid. Please try to align to standardized names with the package type first and pin count last: "QFN-24" rather than "24QFN", "SOIC-8" rather than "8SOIC" or "8-SOIC", "TSSOP-20" rather than "20-TSSOP".
 - category and subcategory: pick the best fit from the list below, or null if nothing fits. The subcategory must be one listed under the chosen category.
 
 Categories and their subcategories:
@@ -65,8 +74,12 @@ ${SUBCATEGORY_GUIDE}
 
 Skip lines that are not components: shipping, tariffs, handling fees, taxes, tape-and-reel/cut-tape charges, and subtotals. Never invent part numbers; if a value is not on the document, use null.`;
 
+type StockedPart = { id: string; mpn: string; name: string; quantity: number };
+
 export type ReceiptLine = {
   mpn: string;
+  // Shown in review when it differs from mpn (packaging suffix removed)
+  printedMpn: string;
   manufacturer: string;
   dpn: string;
   name: string;
@@ -74,7 +87,7 @@ export type ReceiptLine = {
   package: string;
   category: string;
   subcategory: string;
-  existing: { id: string; name: string; quantity: number } | null;
+  existing: StockedPart | null;
 };
 
 export type ExtractResult =
@@ -91,18 +104,13 @@ async function requireSession() {
   if (!session) throw new Error("Unauthorized");
 }
 
-const normalizeMpn = (mpn: string) => mpn.trim().toUpperCase();
-
 async function loadInventoryByMpn() {
   const { data, error } = await supabaseAdmin
     .from(process.env.SUPABASE_INV_TABLE_NAME!)
     .select("id, mpn, name, quantity");
   if (error) throw new Error(error.message);
 
-  const byMpn = new Map<
-    string,
-    { id: string; name: string; quantity: number }
-  >();
+  const byMpn = new Map<string, StockedPart>();
   for (const row of data ?? []) {
     if (row.mpn) byMpn.set(normalizeMpn(row.mpn), row);
   }
@@ -167,7 +175,17 @@ export async function extractInvoice(
   const inventory = await loadInventoryByMpn();
 
   const lines: ReceiptLine[] = invoice.lines.map((line) => {
-    const mpn = line.mpn?.trim() ?? "";
+    const printedMpn = line.mpn_as_printed?.trim() ?? "";
+    let mpn = stripPackagingSuffix(printedMpn, line.mpn?.trim() ?? "");
+
+    // Match on either form, so a part already stocked under its reel MPN
+    // is incremented rather than duplicated. Existing rows keep their MPN.
+    const existing =
+      (mpn && inventory.get(normalizeMpn(mpn))) ||
+      (printedMpn && inventory.get(normalizeMpn(printedMpn))) ||
+      null;
+    if (existing) mpn = existing.mpn;
+
     const category = line.category ?? "";
     const validSub =
       line.category &&
@@ -178,14 +196,15 @@ export async function extractInvoice(
 
     return {
       mpn,
-      manufacturer: line.manufacturer ?? "",
+      printedMpn,
+      manufacturer: normalizeManufacturer(line.manufacturer ?? ""),
       dpn: line.dpn ?? "",
       name: line.description,
       quantity: Math.max(0, line.quantity),
-      package: line.package ?? "",
+      package: normalizePackage(line.package),
       category,
       subcategory: validSub ? line.subcategory! : "",
-      existing: mpn ? (inventory.get(normalizeMpn(mpn)) ?? null) : null,
+      existing,
     };
   });
 
@@ -259,7 +278,7 @@ export async function applyReceipt(input: unknown): Promise<ApplyResult> {
     }
     inserts.push({
       name: line.name,
-      manufacturer: line.manufacturer,
+      manufacturer: normalizeManufacturer(line.manufacturer),
       mpn: line.mpn.trim(),
       distributor,
       dpn: line.dpn,

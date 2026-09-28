@@ -13,6 +13,8 @@ export interface InventoryItem {
   rohs: boolean;
   msl: number;
   package: string;
+  // URL of the manufacturer datasheet
+  datasheet?: string | null;
 }
 
 export {

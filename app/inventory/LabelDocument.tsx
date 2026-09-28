@@ -3,8 +3,13 @@ import qrcode from "qrcode-generator";
 import { InventoryItem } from "@/types/inventory";
 
 // 2x4 inch label
+const PAGE_WIDTH = 288; // 4in
+const PAGE_PADDING = 10;
+const TITLE_MAX_SIZE = 16;
+const TITLE_MIN_SIZE = 9;
+
 const styles = StyleSheet.create({
-  page: { padding: 10, width: "4in", height: "2in" },
+  page: { padding: PAGE_PADDING, width: "4in", height: "2in" },
   header: {
     borderBottomWidth: 1.5,
     borderBottomColor: "#000",
@@ -35,6 +40,38 @@ const styles = StyleSheet.create({
   qrCell: { width: 2.5, height: 2.5 },
 });
 
+// Helvetica-Bold advance widths (per 1000 units of font size) for ASCII
+// 32-126, from the standard PDF font metrics. Used to size the title so it
+// fits on one line.
+const HELVETICA_BOLD_WIDTHS = [
+  278, 333, 474, 556, 556, 889, 722, 238, 333, 333, 389, 584, 278, 333, 278,
+  278, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 333, 333, 584, 584,
+  584, 611, 975, 722, 722, 722, 722, 667, 611, 778, 722, 278, 556, 722, 611,
+  833, 722, 778, 667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 333,
+  278, 333, 584, 556, 333, 556, 611, 556, 611, 556, 333, 611, 611, 278, 278,
+  556, 278, 889, 611, 611, 611, 611, 389, 556, 333, 611, 556, 778, 556, 556,
+  500, 389, 280, 389, 584,
+];
+
+function boldTextWidth(text: string, fontSize: number) {
+  let units = 0;
+  for (const ch of text) {
+    const code = ch.charCodeAt(0);
+    units += HELVETICA_BOLD_WIDTHS[code - 32] ?? 611; // non-ASCII: ~average
+  }
+  return (units / 1000) * fontSize;
+}
+
+// Largest size (down to TITLE_MIN_SIZE) that keeps the title on one line.
+// Past the minimum it wraps instead, which still fits on the label.
+function fitTitleSize(text: string) {
+  const available = (PAGE_WIDTH - PAGE_PADDING * 2) * 0.97; // small margin
+  const widthAtMax = boldTextWidth(text, TITLE_MAX_SIZE);
+  if (widthAtMax <= available) return TITLE_MAX_SIZE;
+  const fitted = Math.floor((TITLE_MAX_SIZE * available * 2) / widthAtMax) / 2;
+  return Math.max(TITLE_MIN_SIZE, fitted);
+}
+
 function buildQrMatrix(value: string): boolean[][] {
   const qr = qrcode(0, "L");
   qr.addData(value || "-");
@@ -54,16 +91,20 @@ function buildQrMatrix(value: string): boolean[][] {
   return matrix;
 }
 
-export const LabelDocument = ({ item }: { item: InventoryItem }) => {
+// One 2x4in label page. Wrapped in a Document by the exports below.
+const LabelPage = ({ item }: { item: InventoryItem }) => {
   const qrMatrix = buildQrMatrix(item.mpn);
 
   const specsSummary = (item.spec || "").trim();
 
   return (
-    <Document>
-      <Page size={[288, 144]} style={styles.page}>
+    <>
+      {/* wrap={false}: never spill onto a second page */}
+      <Page size={[PAGE_WIDTH, 144]} style={styles.page} wrap={false}>
         <View style={styles.header}>
-          <Text style={styles.title}>{item.name}</Text>
+          <Text style={[styles.title, { fontSize: fitTitleSize(item.name) }]}>
+            {item.name}
+          </Text>
           <Text style={styles.subtitle}>{item.mpn}</Text>
         </View>
 
@@ -119,6 +160,21 @@ export const LabelDocument = ({ item }: { item: InventoryItem }) => {
           </View>
         </View>
       </Page>
-    </Document>
+    </>
   );
 };
+
+export const LabelDocument = ({ item }: { item: InventoryItem }) => (
+  <Document>
+    <LabelPage item={item} />
+  </Document>
+);
+
+// Several labels in one PDF, one per page.
+export const LabelsDocument = ({ items }: { items: InventoryItem[] }) => (
+  <Document>
+    {items.map((item) => (
+      <LabelPage key={item.id} item={item} />
+    ))}
+  </Document>
+);
