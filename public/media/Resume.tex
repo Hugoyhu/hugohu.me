@@ -12,7 +12,7 @@
 \usepackage{geometry}
 \geometry{
 letterpaper,
-top=.65in,
+top=.5in,
 bottom=.65in,
 left=.7in,
 right=.7in,
@@ -109,12 +109,13 @@ right=.7in,
 \section{Technical Skills}
 %===============================
 \vspace{-0.6\baselineskip}
-\paragraph{Languages:} C, SQL, Python, MATLAB, C\#, Java\\
+\paragraph{Languages:} Python, Java, C\#, C, SQL, MATLAB\\
 \vspace{-2.1\baselineskip}
-\paragraph{Tools:} Git, MongoDB, Supabase / PostgreSQL, KiCAD, LaTeX\\
+\paragraph{Tools:} Git, MongoDB, Supabase / PostgreSQL, KiCAD, LaTeX, HTML/CSS\\
 \vspace{-2.1\baselineskip}
-\paragraph{Frameworks:} Next.js, React.js, Express.js, Node.js, HTML/CSS\\
-
+\paragraph{Frameworks:} Next.js, React.js, Express.js, Node.js\\
+\vspace{-2.1\baselineskip}
+\paragraph{AI/Development:} Agentic AI, LLM APIs, Tool Calling, Structured Outputs\\
 \vspace{-1\baselineskip}
 
 % \section{Awards \& Honors}
@@ -131,8 +132,8 @@ right=.7in,
 \subsection{Stony Brook Campus Residences \hfill Stony Brook, NY}
 \subsubsection{IT and Programming Intern \hfill September 2026 - Present}
 \begin{itemize}
-    \item Port legacy codebases into unified React/Express.js web interface for tracking asset availability and status
-    \item Perform on-site and remote technical diagnostics, resolving hardware and network issues across campus
+    \item Migrate legacy asset-tracking applications into unified React/Express.js web interface, consolidating resupply and service workflows; develop a Google Sheets synchronization pipeline 
+    % \item Diagnose and resolve hardware, software, and networking issues through on-site and remote support
 \end{itemize}
 
 \subsection{Hack Club \hfill Shelburne, VT and Remote}
@@ -145,7 +146,7 @@ right=.7in,
 \subsubsection{Logistics and Operations Intern \hfill July 2021 - August 2023}
 \begin{itemize}
     \item Built a mailing address database using USPS Intelligent Mail Barcode, enabling no-cost trackable postage
-    \item Integrated Shippo API into a Slack shipping agent to automate postage label purchase and generation
+    % \item Integrated Shippo API into a Slack shipping agent to automate postage label purchase and generation
     \item Reduced domestic shipping costs by up to 60\% and international costs by up to 80\% %, including devising alternate routing through regional trade disruptions%
     % \item Planned and managed on-the-ground logistics with organizers and sourced affordable and high-quality merchandise for in-person hackathons in San Francisco (approx.\ 150 attendees), Vermont, and New York
 \end{itemize}
@@ -153,14 +154,14 @@ right=.7in,
 \section{Research Experience}
 %===================
 \subsection{Memorial Sloan Kettering Cancer Center \hfill New York, NY}
-\subsubsection{Student Intern, Medical Physics \hfill May 2025 - November 2025}
+\subsubsection{Medical Physics Student Intern \hfill May 2025 - November 2025}
 \begin{itemize}
     \item Fine-tuned and validated a CNN-based deformable image registration (DIR) model for aligning cone-beam CT scans to planning CTs for lung cancer treatment monitoring, achieving validation DICE score over 0.75
     \item Prototyped a multi-head attention DIR architecture, reaching parity with CNN and VoxelMorph baselines
     \item Ran training and inference on HPC clusters and configured CUDA environments for training compatibility
     \item Wrote MATLAB and Python code to preprocess and validate training datasets
 \end{itemize}
-\subsubsection{Summer Intern, Medical Physics \hfill July 2024 - August 2024}
+\subsubsection{Medical Physics Summer Intern \hfill July 2024 - August 2024}
 \begin{itemize}
     \item Wrote C\#, Python preprocessing code for head/neck cancer segmentation training for treatment tracking
     \item Leveraged HPC clusters and IBM LSF (bsub) for job scheduling
@@ -170,18 +171,19 @@ right=.7in,
 \section{Projects}
 %=================
 
-
-\subsection{Personal Photography Portfolio {\normalfont $|$ Next.js, Tailwind CSS, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
+\subsection{Component Inventory Manager {\normalfont $|$ Next.js, Claude API, Supabase} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
 \begin{itemize}
-    \item Designed a performant Next.js photography site with Cloudinary CDN delivery and EXIF-based filtering, cutting image load times and simplifying browsing across collections
+    \item Implemented a full-stack Next.js/Supabase system for electronic components with inline editing, flexible part search, and thermal-printable QR-coded asset labels
+    \item Built a Claude invoice import pipeline using structured outputs with human review before database writes
+    \item Designed a tool-using chat agent for natural-language search and batch labeling, with cost-aware routing
+\end{itemize}
+
+\subsection{Personal Photography Portfolio {\normalfont $|$ Next.js, NextAuth, Cloudinary CDN} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
+\begin{itemize}
+    \item Designed a performant Next.js photography site with Cloudinary CDN delivery, EXIF extraction, and category-based filtering, cutting image load times and simplifying browsing across collections
     \item Built a secure authenticated admin dashboard (NextAuth, Bcrypt) backed by Supabase PostgreSQL, enabling non-technical content updates without redeploying the site
 \end{itemize}
 
-\subsection{Component Inventory Manager {\normalfont $|$ PostgreSQL (Supabase), NextAuth} {\normalfont $|$ \href{https://github.com/Hugoyhu/hugohu.me}{\textit{GitHub}}} \hfill 2026}
-\begin{itemize}
-    \item Implemented a full-stack Next.js/Supabase system to manage electronic components, MPNs, and distributor data, with a barcode-scanner-compatible search tool for fast lookups
-    \item Generated thermal-printable asset labels to tag and organize components, streamlining inventory retrieval
-\end{itemize}
 
 
 
